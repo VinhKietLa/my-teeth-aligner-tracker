@@ -1,0 +1,18 @@
+.hero-section {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white; /* Assuming white text for contrast */
+  min-height: 100vh;
+}
+
+.hero-title {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 5rem;
+}
+
+.hero-section .get-started-btn {
+  background-color: #83c5dc;
+  font-size: 2rem;
+}

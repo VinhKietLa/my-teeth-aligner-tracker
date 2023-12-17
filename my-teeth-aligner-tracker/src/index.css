@@ -10,3 +10,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* Custom CSS file */
+
+/* Ensure this comes after the Bootstrap CSS import */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1600px;
+  }
+}
