@@ -5,7 +5,8 @@ import HeroSection from "./components/hero/hero";
 import BenefitsSection from "./components/benefits/benefits";
 import ContactUs from "./components/contact-us/contact";
 import Footer from "./components/footer/footer";
-import SignUp from "./components/sign-up/sign-up"; // Import the SignUp component
+import SignUp from "./components/sign-up/sign-up";
+import AlignersInput from "./components/aligners-input/alignersInput";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           }
         />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/alignersetup" element={<AlignersInput />} />
       </Routes>
     </Router>
   );

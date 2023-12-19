@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
 import "./sign-up.css"; // Make sure to include the path to your CSS file
+import { Link } from "react-router-dom";
 
 function SignUp() {
   return (
@@ -22,9 +23,12 @@ function SignUp() {
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
               <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" type="submit">
-                  Sign Up
-                </Button>
+                <Link to="/alignersetup">
+                  <Button variant="primary" size="lg" type="submit">
+                    Sign Up
+                  </Button>
+                </Link>
+
                 <Form.Text className="text-center">
                   Already have an account? <a href="#login">Sign in</a>
                 </Form.Text>
