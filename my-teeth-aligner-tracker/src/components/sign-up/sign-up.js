@@ -5,7 +5,7 @@ import "./sign-up.css"; // Make sure to include the path to your CSS file
 function SignUp() {
   return (
     <Container className="d-flex justify-content-center align-items-center vh-100">
-      <Row>
+      <Row className="w-100">
         <Col md={6} className="mx-auto">
           <div className="signup-form-wrapper">
             <h2 className="text-center mb-4">
