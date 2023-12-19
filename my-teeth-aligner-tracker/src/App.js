@@ -1,20 +1,31 @@
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MyNavbar from "./components/navbar/navbar";
 import HeroSection from "./components/hero/hero";
 import BenefitsSection from "./components/benefits/benefits";
 import ContactUs from "./components/contact-us/contact";
-import Footer from "./components/footer/footer.js";
+import Footer from "./components/footer/footer";
+import SignUp from "./components/sign-up/sign-up"; // Import the SignUp component
 
 function App() {
   return (
-    <>
-      {" "}
+    <Router>
       <MyNavbar />
-      <HeroSection />
-      <BenefitsSection />
-      <ContactUs />
-      <Footer />
-    </>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <HeroSection />
+              <BenefitsSection />
+              <ContactUs />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </Router>
   );
 }
 

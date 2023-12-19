@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import logo from "./logo.png";
 import "./navbar.css";
+import { Link } from "react-router-dom";
 
 function MyNavbar() {
   return (
@@ -18,9 +19,11 @@ function MyNavbar() {
             className="d-inline-block align-top nav-logo"
             alt="Logo"
           />
-          <span style={{ color: "white", fontWeight: "bold" }}>
-            SmileMinder
-          </span>
+          <Link to="/">
+            <span style={{ color: "white", fontWeight: "bold" }}>
+              SmileMinder
+            </span>
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -36,9 +39,11 @@ function MyNavbar() {
             <Nav.Link href="#signin" className="text-white nav-link-custom">
               Sign in
             </Nav.Link>
-            <Button className="get-started-btn" href="#get-started">
-              Get Started
-            </Button>
+            <Link to="/signup">
+              <Button className="get-started-btn" href="#get-started">
+                Get Started
+              </Button>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
