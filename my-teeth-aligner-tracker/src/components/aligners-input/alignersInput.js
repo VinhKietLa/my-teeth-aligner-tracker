@@ -3,6 +3,9 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const token = localStorage.getItem("jwtToken"); // Retrieve token from local storage
+console.log("JWT Token:", token);
+
 function TreatmentForm() {
   const [startDate, setStartDate] = useState(new Date());
   const [numberOfAligners, setNumberOfAligners] = useState(1);
@@ -27,6 +30,39 @@ function TreatmentForm() {
       );
     }
     return options;
+  };
+
+  // Form submission handler
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const token = localStorage.getItem("jwtToken"); // Retrieve token from local storage
+    console.log("JWT Token:", token);
+
+    const treatmentData = {
+      start_date: startDate.toISOString(),
+      aligners_attributes: Object.entries(alignerWeeks).map(
+        ([aligner, weeks]) => ({
+          duration_weeks: weeks,
+        })
+      ),
+    };
+
+    const response = await fetch("http://localhost:3000/api/treatment_plans", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ treatment_plan: treatmentData }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    } else {
+      const errorData = await response.json();
+      console.log("Error signing up:", errorData);
+    }
   };
 
   const renderAlignerInputs = () => {
@@ -55,13 +91,6 @@ function TreatmentForm() {
       );
     }
     return inputs;
-  };
-
-  // Form submission handler
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Process the form data
-    console.log(startDate, numberOfAligners, alignerWeeks);
   };
 
   return (

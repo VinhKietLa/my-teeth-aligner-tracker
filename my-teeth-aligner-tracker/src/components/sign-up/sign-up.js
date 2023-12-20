@@ -9,7 +9,6 @@ async function fetchCsrfToken() {
     credentials: "include",
   });
   const data = await response.json();
-  console.log(data);
   return data.csrfToken;
 }
 
@@ -22,7 +21,6 @@ function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const csrfToken = await fetchCsrfToken();
-    console.log(csrfToken);
     const formData = {
       user: {
         email: email,
@@ -42,7 +40,12 @@ function SignUp() {
     });
 
     if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem("jwtToken", data.token); // Store the JWT token
       navigate("/alignersetup");
+      const token = localStorage.getItem("jwtToken"); // Retrieve token from local storage
+
+      console.log("JWT Token:", token);
     } else {
       const errorData = await response.json();
       console.log("Error signing up:", errorData);
