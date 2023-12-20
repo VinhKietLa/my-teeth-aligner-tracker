@@ -1,9 +1,53 @@
 import React from "react";
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
 import "./sign-up.css"; // Make sure to include the path to your CSS file
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+async function fetchCsrfToken() {
+  const response = await fetch("http://localhost:3000/csrf", {
+    credentials: "include",
+  });
+  const data = await response.json();
+  console.log(data);
+  return data.csrfToken;
+}
 
 function SignUp() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const csrfToken = await fetchCsrfToken();
+    console.log(csrfToken);
+    const formData = {
+      user: {
+        email: email,
+        username: username,
+        password: password,
+      },
+    };
+
+    // Send data to backend
+    const response = await fetch("http://localhost:3000/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken,
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      navigate("/alignersetup");
+    } else {
+      const errorData = await response.json();
+      console.log("Error signing up:", errorData);
+    }
+  };
   return (
     <Container className="d-flex justify-content-center align-items-center vh-100">
       <Row className="w-100">
@@ -12,22 +56,35 @@ function SignUp() {
             <h2 className="text-center mb-4">
               Start Tracking Your Aligners Today
             </h2>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3">
-                <Form.Control type="email" placeholder="Email Address" />
+                <Form.Control
+                  type="email"
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Username" />
+                <Form.Control
+                  type="text"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </Form.Group>
               <div className="d-grid gap-2">
-                <Link to="/alignersetup">
-                  <Button variant="primary" size="lg" type="submit">
-                    Sign Up
-                  </Button>
-                </Link>
+                <Button variant="primary" size="lg" type="submit">
+                  Sign Up
+                </Button>
 
                 <Form.Text className="text-center">
                   Already have an account? <a href="#login">Sign in</a>
