@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
@@ -9,6 +10,7 @@ function Dashboard() {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
+        console.log(token);
         const headers = {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -52,18 +54,57 @@ function Dashboard() {
   if (!userData || !treatmentPlan || !alignerInfo) return <div>Loading...</div>;
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      {/* Display User Info */}
-      <p>Username: {userData.username}</p>
-      {/* ... other user data ... */}
+    <Container fluid>
+      <Row>
+        {/* Sidebar */}
+        <Col
+          md={3}
+          className="sidebar"
+          style={{ backgroundColor: "lightblue" }}
+        >
+          <h2>{userData.username}</h2>
+          <ul>
+            <li>Dashboard</li>
+            <li>Settings</li>
+          </ul>
+        </Col>
 
-      {/* Display Treatment Plan Info */}
-      {/* ... treatment plan data ... */}
+        {/* Main Content */}
+        <Col md={9}>
+          <Row>
+            {/* Card 1: Treatment Time Remaining */}
+            <Col md={4}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>Treatment Time Remaining</Card.Title>
+                  <Card.Text>{/* Treatment time remaining info */}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
 
-      {/* Display Aligner Info */}
-      {/* ... aligner info ... */}
-    </div>
+            {/* Card 2: Next Aligner Switch */}
+            <Col md={4}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>Next Aligner Switch</Card.Title>
+                  <Card.Text>{/* Next aligner switch info */}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+
+            {/* Card 3: New Smile ETA */}
+            <Col md={4}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>New Smile ETA</Card.Title>
+                  <Card.Text>{/* New smile ETA info */}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

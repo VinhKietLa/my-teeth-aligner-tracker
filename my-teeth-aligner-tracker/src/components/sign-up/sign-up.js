@@ -41,9 +41,9 @@ function SignUp() {
 
     if (response.ok) {
       const data = await response.json();
-      localStorage.setItem("jwtToken", data.token); // Store the JWT token
+      localStorage.setItem("token", data.token); // Store the token
       navigate("/alignersetup");
-      const token = localStorage.getItem("jwtToken"); // Retrieve token from local storage
+      const token = localStorage.getItem("token"); // Retrieve token from local storage
 
       console.log("JWT Token:", token);
     } else {

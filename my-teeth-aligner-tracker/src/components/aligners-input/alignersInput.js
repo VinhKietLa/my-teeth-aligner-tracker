@@ -4,9 +4,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 
-const token = localStorage.getItem("jwtToken"); // Retrieve token from local storage
-console.log("JWT Token:", token);
-
 function TreatmentForm() {
   const navigate = useNavigate();
 
@@ -62,8 +59,7 @@ function TreatmentForm() {
   // Form submission handler
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const token = localStorage.getItem("jwtToken"); // Retrieve token from local storage
-    console.log("JWT Token:", token);
+    const token = localStorage.getItem("token"); // Retrieve token from local storage
 
     const treatmentData = {
       start_date: startDate.toISOString(),
@@ -85,6 +81,7 @@ function TreatmentForm() {
 
     if (response.ok) {
       const data = await response.json();
+      localStorage.getItem("token"); // Get the token
       navigate("/dashboard");
     } else {
       const errorData = await response.json();
