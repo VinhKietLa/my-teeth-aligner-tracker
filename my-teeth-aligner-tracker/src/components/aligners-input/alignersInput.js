@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,15 +9,39 @@ console.log("JWT Token:", token);
 function TreatmentForm() {
   const [startDate, setStartDate] = useState(new Date());
   const [numberOfAligners, setNumberOfAligners] = useState(1);
-  const [alignerWeeks, setAlignerWeeks] = useState({});
+  const [alignerWeeks, setAlignerWeeks] = useState({ 1: 1 });
+  useEffect(() => {
+    console.log(alignerWeeks);
+  }, [alignerWeeks]);
 
   const handleAlignerChange = (event) => {
-    setNumberOfAligners(event.target.value);
-    setAlignerWeeks({});
+    const newNumberOfAligners = parseInt(event.target.value, 10);
+    setNumberOfAligners(newNumberOfAligners);
+
+    // Initialize state for all aligners
+    setAlignerWeeks((prevAlignerWeeks) => {
+      const newAlignerWeeks = { ...prevAlignerWeeks };
+      // Add default week values for new aligners
+      for (let i = 1; i <= newNumberOfAligners; i++) {
+        if (!newAlignerWeeks[i]) {
+          newAlignerWeeks[i] = 1;
+        }
+      }
+      // Remove week values for aligners that no longer exist
+      Object.keys(newAlignerWeeks).forEach((key) => {
+        if (parseInt(key, 10) > newNumberOfAligners) {
+          delete newAlignerWeeks[key];
+        }
+      });
+      return newAlignerWeeks;
+    });
   };
 
   const handleWeekChange = (aligner, weeks) => {
-    setAlignerWeeks({ ...alignerWeeks, [aligner]: weeks });
+    setAlignerWeeks((prevAlignerWeeks) => ({
+      ...prevAlignerWeeks,
+      [aligner]: parseInt(weeks, 10),
+    }));
   };
 
   const alignerOptions = () => {

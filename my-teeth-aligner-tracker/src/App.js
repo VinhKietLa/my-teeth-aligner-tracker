@@ -7,6 +7,7 @@ import ContactUs from "./components/contact-us/contact";
 import Footer from "./components/footer/footer";
 import SignUp from "./components/sign-up/sign-up";
 import AlignersInput from "./components/aligners-input/alignersInput";
+import LoginForm from "./components/login/login";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/alignersetup" element={<AlignersInput />} />
+        <Route path="/login" element={<LoginForm />} />
       </Routes>
     </Router>
   );

@@ -36,9 +36,11 @@ function MyNavbar() {
             <Nav.Link href="#help" className="text-white nav-link-custom">
               Help
             </Nav.Link>
-            <Nav.Link href="#signin" className="text-white nav-link-custom">
-              Sign in
-            </Nav.Link>
+            <Link to="/login">
+              <Nav.Link href="#signin" className="text-white nav-link-custom">
+                Sign in
+              </Nav.Link>
+            </Link>
             <Link to="/signup">
               <Button className="get-started-btn" href="#get-started">
                 Get Started
