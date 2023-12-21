@@ -1,5 +1,6 @@
 # app/controllers/authentication_controller.rb
-class AuthenticationController < ApplicationController
+module Api
+  class AuthenticationController < ApplicationController
     def login
       user = User.find_by(username: params[:username])
   

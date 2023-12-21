@@ -1,3 +1,4 @@
+module Api
 class UsersController < ApplicationController
 
     def create
@@ -10,6 +11,14 @@ class UsersController < ApplicationController
       end    
     rescue ActionController::InvalidAuthenticityToken => e
       render json: { error: "Invalid authenticity token" }, status: :unprocessable_entity
+    end
+
+    def show
+      if current_user
+        render json: { id: current_user.id, email: current_user.email, username: current_user.username }, status: :ok
+      else
+        render json: { error: 'Not Authorized' }, status: :unauthorized
+      end
     end
   
     private
@@ -24,4 +33,5 @@ class UsersController < ApplicationController
       JWT.encode(payload, Rails.application.secrets.secret_key_base, 'HS256')
     end
   end
+end
   
