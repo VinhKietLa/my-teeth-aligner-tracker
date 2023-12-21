@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
 const token = localStorage.getItem("jwtToken"); // Retrieve token from local storage
 console.log("JWT Token:", token);
 
 function TreatmentForm() {
+  const navigate = useNavigate();
+
   const [startDate, setStartDate] = useState(new Date());
   const [numberOfAligners, setNumberOfAligners] = useState(1);
   const [alignerWeeks, setAlignerWeeks] = useState({ 1: 1 });
@@ -82,7 +85,7 @@ function TreatmentForm() {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+      navigate("/dashboard");
     } else {
       const errorData = await response.json();
       console.log("Error signing up:", errorData);

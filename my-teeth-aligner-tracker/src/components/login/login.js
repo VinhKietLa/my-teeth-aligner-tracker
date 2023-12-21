@@ -21,7 +21,7 @@ function LoginForm() {
     if (response.ok) {
       const data = await response.json();
       localStorage.setItem("token", data.token); // Store the token
-      navigate("/alignersetup");
+      navigate("/dashboard");
     } else {
       // Handle login failure
       console.log("Login failed");
