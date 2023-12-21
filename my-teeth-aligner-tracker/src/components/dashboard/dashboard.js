@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { calculateTreatmentTimeRemaining } from "../treatmentCalculations/treatmentCalculations";
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
@@ -23,18 +24,18 @@ function Dashboard() {
         const userData = await userResponse.json();
         setUserData(userData);
         console.log(userData);
-        // Fetch Treatment Plan (assuming endpoint and logic)
-        // You'll need to adjust the URL and logic based on your actual API and data structure
+
         const treatmentResponse = await fetch(
           "http://localhost:3000/api/treatment_plans",
           { headers }
         );
         const treatmentData = await treatmentResponse.json();
         setTreatmentPlan(treatmentData);
-        console.log(treatmentData);
+        if (treatmentData && treatmentData.length > 0) {
+          setTreatmentPlan(treatmentData[0]);
+        }
 
-        // Fetch Aligner Info
-        // Similar to above, adjust as needed
+        console.log(treatmentData);
         const alignerResponse = await fetch(
           "http://localhost:3000/api/aligners",
           { headers }
@@ -44,12 +45,18 @@ function Dashboard() {
         console.log(alignerData);
       } catch (error) {
         console.error("Error fetching data:", error);
-        // Handle errors appropriately
       }
     };
 
     fetchData();
   }, []);
+
+  const treatmentStartDate = treatmentPlan?.start_date;
+  console.log(treatmentStartDate);
+  const treatmentTimeRemaining =
+    treatmentPlan && alignerInfo
+      ? calculateTreatmentTimeRemaining(treatmentStartDate, alignerInfo)
+      : null;
 
   if (!userData || !treatmentPlan || !alignerInfo) return <div>Loading...</div>;
 
@@ -77,7 +84,7 @@ function Dashboard() {
               <Card>
                 <Card.Body>
                   <Card.Title>Treatment Time Remaining</Card.Title>
-                  <Card.Text>{/* Treatment time remaining info */}</Card.Text>
+                  <Card.Text>{treatmentTimeRemaining} weeks</Card.Text>{" "}
                 </Card.Body>
               </Card>
             </Col>
