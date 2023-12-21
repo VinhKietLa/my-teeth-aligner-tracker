@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { calculateTreatmentTimeRemaining } from "../treatmentCalculations/treatmentCalculations";
+import { calculateNextAlignerSwitch } from "../treatmentCalculations/treatmentCalculations";
+import { calculateEndOfTreatment } from "../treatmentCalculations/treatmentCalculations";
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
@@ -58,6 +60,14 @@ function Dashboard() {
       ? calculateTreatmentTimeRemaining(treatmentStartDate, alignerInfo)
       : null;
 
+  const nextAlignerSwitchDate = alignerInfo
+    ? calculateNextAlignerSwitch(alignerInfo, treatmentPlan.start_date)
+    : null;
+
+  const alignerEndDate = alignerInfo
+    ? calculateEndOfTreatment(alignerInfo, treatmentPlan.start_date)
+    : null;
+
   if (!userData || !treatmentPlan || !alignerInfo) return <div>Loading...</div>;
 
   return (
@@ -94,7 +104,7 @@ function Dashboard() {
               <Card>
                 <Card.Body>
                   <Card.Title>Next Aligner Switch</Card.Title>
-                  <Card.Text>{/* Next aligner switch info */}</Card.Text>
+                  <Card.Text>{nextAlignerSwitchDate}</Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -104,7 +114,7 @@ function Dashboard() {
               <Card>
                 <Card.Body>
                   <Card.Title>New Smile ETA</Card.Title>
-                  <Card.Text>{/* New smile ETA info */}</Card.Text>
+                  <Card.Text>{alignerEndDate}</Card.Text>
                 </Card.Body>
               </Card>
             </Col>

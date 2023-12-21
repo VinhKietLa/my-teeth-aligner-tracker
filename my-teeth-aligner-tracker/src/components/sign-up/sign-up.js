@@ -3,6 +3,7 @@ import { Form, Row, Col, Button, Container } from "react-bootstrap";
 import "./sign-up.css"; // Make sure to include the path to your CSS file
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 async function fetchCsrfToken() {
   const response = await fetch("http://localhost:3000/csrf", {
@@ -88,10 +89,11 @@ function SignUp() {
                 <Button variant="primary" size="lg" type="submit">
                   Sign Up
                 </Button>
-
-                <Form.Text className="text-center">
-                  Already have an account? <a href="#login">Sign in</a>
-                </Form.Text>
+                <Link to="/login">
+                  <Form.Text className="text-center">
+                    Already have an account? <a href="#login">Sign in</a>
+                  </Form.Text>
+                </Link>
               </div>
             </Form>
           </div>
