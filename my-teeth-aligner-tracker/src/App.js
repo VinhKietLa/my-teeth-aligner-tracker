@@ -16,6 +16,8 @@ import LoginForm from "./components/login/login";
 import Dashboard from "./components/dashboard/dashboard";
 import ConditionalNavbar from "./components/conditional-navbar/conditional-navbar";
 import Profile from "./components/profile/profile";
+import TreatmentUpdate from "./components/treatment-plan/treatment-update";
+
 const NavbarWrapper = () => {
   const location = useLocation();
   const showNavbar =
@@ -43,6 +45,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/treatment-update" element={<TreatmentUpdate />} />
       </Routes>
     </Router>
   );

@@ -2,15 +2,23 @@ import React, { useState, useEffect } from "react";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import Logout from "../log-out/log-out";
 import { Link } from "react-router-dom";
-import TreatmentUpdate from "../treatment-plan/treatment-update";
+import DatePicker from "react-datepicker";
 
-function Profile() {
-  const [userData, setUserData] = useState(null);
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+function TreatmentUpdate() {
+  const [treatmentData, setTreatmentData] = useState(null);
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [numberOfAligners, setNumberOfAligners] = useState(1);
+  const [alignerWeeks, setAlignerWeeks] = useState({});
+  const [alignerInfo, setAlignerInfo] = useState(null);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      console.log("Fetching data...");
+      // Existing fetch logic
+    };
+
+    fetchUserData();
+  }, []);
 
   useEffect(() => {
     // Fetch User Data
@@ -21,16 +29,29 @@ function Profile() {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         };
-        const userResponse = await fetch("http://localhost:3000/api/user", {
-          headers,
-        });
-        const userData = await userResponse.json();
-        if (userData) {
-          setUserData(userData);
-          console.log(userData);
-          setEmail(userData.email);
-          setUsername(userData.username);
+        const treatmentResponse = await fetch(
+          "http://localhost:3000/api/treatment_plans",
+          {
+            headers,
+          }
+        );
+        const treatmentData = await treatmentResponse.json();
+        console.log(treatmentData);
+        if (treatmentData && treatmentData.length > 0) {
+          setTreatmentData(treatmentData[0]);
+          const startDateValue = new Date(treatmentData[0].start_date);
+          if (!isNaN(startDateValue)) {
+            setStartDate(startDateValue);
+          }
         }
+
+        const alignerResponse = await fetch(
+          "http://localhost:3000/api/aligners",
+          { headers }
+        );
+        const alignerData = await alignerResponse.json();
+        setAlignerInfo(alignerData);
+        console.log(alignerData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -49,8 +70,8 @@ function Profile() {
 
     const body = JSON.stringify({
       user: {
-        username: username,
-        email: email,
+        // username: username,
+        // email: email,
       },
     });
 
@@ -64,53 +85,13 @@ function Profile() {
       if (!userResponse.ok) {
         throw new Error(`Error: ${userResponse.status}`);
       }
-      setUserData(updatedUserData); // Update state with the new user data
+      //   setUserData(updatedUserData); // Update state with the new user data
     } catch (error) {
       console.error("Error updating data:", error);
     }
   };
 
-  const handlePasswordChangeSubmit = async (event) => {
-    event.preventDefault();
-    if (newPassword !== confirmNewPassword) {
-      console.error("New passwords do not match");
-      return;
-    }
-
-    const token = localStorage.getItem("token");
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    };
-
-    const body = JSON.stringify({
-      old_password: oldPassword,
-      new_password: newPassword,
-    });
-
-    try {
-      const response = await fetch(
-        "http://localhost:3000/api/user/changepassword",
-        {
-          method: "PATCH",
-          headers: headers,
-          body: body,
-        }
-      );
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-      console.log("Password updated successfully");
-      // Clear the password fields
-      setOldPassword("");
-      setNewPassword("");
-      setConfirmNewPassword("");
-    } catch (error) {
-      console.error("Error updating password:", error);
-    }
-  };
-
-  if (!userData) return <div>Loading...</div>;
+  if (!treatmentData) return <div>Loading...</div>;
 
   return (
     <>
@@ -118,7 +99,7 @@ function Profile() {
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
         <Col md={3} className="sidebar">
-          <h2>{userData.username}</h2>
+          <h2>{treatmentData.username}</h2>
           <ul>
             <Link to="/profile">
               <li>Your profile</li>
@@ -126,9 +107,7 @@ function Profile() {
             <Link to="/dashboard">
               <li>Dashboard</li>
             </Link>
-            <Link to="/treatment-update">
-              <li>Treatment plan</li>
-            </Link>
+            <li>Treatment plan</li>
             <li>{<Logout />}</li>
           </ul>
         </Col>
@@ -136,27 +115,39 @@ function Profile() {
         {/* Main Content */}
         <Col md={9} className="main-content">
           <Row>
-            <h1>Your profile</h1>
-            <h2>Details</h2>
+            <h1>Your Treatment Plan</h1>
+            <h2>Edit your plan</h2>
             <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-3">
-                <Form.Label>Username</Form.Label>
-
-                <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={3}>
+                  Treatment Start Date:
+                </Form.Label>
+                <Col sm={9}>
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                  />
+                </Col>
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Label>Email</Form.Label>
+                <Form.Label>Number of Aligners</Form.Label>
 
                 <Form.Control
                   type="email"
                   placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={numberOfAligners}
+                  onChange={(e) => setNumberOfAligners(e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Aligner Duration</Form.Label>
+
+                <Form.Control
+                  type="email"
+                  placeholder="Email Address"
+                  value={alignerWeeks}
+                  onChange={(e) => setAlignerWeeks(e.target.value)}
                 />
               </Form.Group>
 
@@ -167,7 +158,7 @@ function Profile() {
               </div>
             </Form>
 
-            <Form onSubmit={handlePasswordChangeSubmit}>
+            {/* <Form onSubmit={handlePasswordChangeSubmit}>
               <h2>Change password</h2>
               <Form.Group className="mb-3">
                 <Form.Label>Old password</Form.Label>
@@ -204,7 +195,7 @@ function Profile() {
                   Change password{" "}
                 </Button>
               </div>
-            </Form>
+            </Form> */}
           </Row>
         </Col>
       </Container>
@@ -212,4 +203,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default TreatmentUpdate;
