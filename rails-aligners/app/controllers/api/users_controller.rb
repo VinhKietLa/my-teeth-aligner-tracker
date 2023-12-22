@@ -20,7 +20,30 @@ class UsersController < ApplicationController
         render json: { error: 'Not Authorized' }, status: :unauthorized
       end
     end
-  
+
+    def update
+      # Assuming you have a method `current_user` that returns the logged-in user
+      if current_user.update(user_params)
+        render json: current_user
+      else
+        render json: current_user.errors, status: :unprocessable_entity
+      end
+    end
+    
+    def change_password
+      user = current_user # Assuming you have a way to identify the current user
+
+      if user.authenticate(params[:old_password])
+        if user.update(password: params[:new_password])
+          # Handle successful password change
+          render json: { message: "Password successfully updated" }, status: :ok
+        else
+          render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+        end
+      else
+        render json: { error: "Old password is incorrect" }, status: :unauthorized
+      end
+    end
     private
   
     def user_params
