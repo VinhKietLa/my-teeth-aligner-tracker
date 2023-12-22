@@ -15,10 +15,11 @@ import AlignersInput from "./components/aligners-input/alignersInput";
 import LoginForm from "./components/login/login";
 import Dashboard from "./components/dashboard/dashboard";
 import ConditionalNavbar from "./components/conditional-navbar/conditional-navbar";
-
+import Profile from "./components/profile/profile";
 const NavbarWrapper = () => {
   const location = useLocation();
-  const showNavbar = location.pathname !== "/dashboard";
+  const showNavbar =
+    location.pathname !== "/dashboard" && location.pathname !== "/profile";
   return <>{showNavbar && <MyNavbar />}</>;
 };
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/alignersetup" element={<AlignersInput />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

@@ -4,7 +4,8 @@ import MyNavbar from "../navbar/navbar";
 
 const ConditionalNavbar = () => {
   const location = useLocation();
-  const showNavbar = location.pathname !== "/dashboard";
+  const showNavbar =
+    location.pathname !== "/dashboard" || location.pathname !== "/profile";
 
   return <>{showNavbar && <MyNavbar />}</>;
 };

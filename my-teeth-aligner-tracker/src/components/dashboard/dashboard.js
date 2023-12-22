@@ -6,6 +6,8 @@ import { calculateEndOfTreatment } from "../treatmentCalculations/treatmentCalcu
 import AlignerCalendar from "../calendar/calendar";
 import "./dashboard.css";
 import Logout from "../log-out/log-out";
+import Profile from "../profile/profile";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
@@ -80,7 +82,9 @@ function Dashboard() {
         <Col md={3} className="sidebar">
           <h2>{userData.username}</h2>
           <ul>
-            <li>Profile</li>
+            <Link to="/profile">
+              <li>Profile</li>
+            </Link>
             <li>Dashboard</li>
             <li>Settings</li>
             <li>{<Logout />}</li>
