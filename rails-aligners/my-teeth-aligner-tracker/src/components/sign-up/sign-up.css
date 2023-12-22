@@ -1,0 +1,18 @@
+.signup-form-wrapper {
+  background-color: #f0f0f0; /* Adjust the background color as needed */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust the height of the container to take up the full viewport height */
+.vh-100 {
+  min-height: 100vh;
+}
+
+/* Optionally, you can add more responsive behavior */
+@media (max-width: 768px) {
+  .signup-form-wrapper {
+    padding: 1rem;
+  }
+}

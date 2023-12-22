@@ -1,0 +1,16 @@
+.nav-bg-custom {
+  background-color: #217380;
+}
+
+.nav-logo {
+  margin-right: 1rem;
+}
+
+.navbar .nav-link.nav-link-custom {
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.navbar .get-started-btn {
+  background-color: #83c5dc;
+}
