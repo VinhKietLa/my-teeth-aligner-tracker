@@ -1,0 +1,19 @@
+.calendar-tile {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aligner-completed {
+  background-color: #90ee90; /* Light green for completed weeks */
+}
+
+.aligner-current {
+  background-color: orange; /* Orange for the current week */
+}
+
+.aligner-upcoming {
+  background-color: red; /* Red for upcoming weeks */
+}

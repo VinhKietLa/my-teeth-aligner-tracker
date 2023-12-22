@@ -3,6 +3,7 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import { calculateTreatmentTimeRemaining } from "../treatmentCalculations/treatmentCalculations";
 import { calculateNextAlignerSwitch } from "../treatmentCalculations/treatmentCalculations";
 import { calculateEndOfTreatment } from "../treatmentCalculations/treatmentCalculations";
+import AlignerCalendar from "../calendar/calendar";
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
@@ -32,7 +33,6 @@ function Dashboard() {
           { headers }
         );
         const treatmentData = await treatmentResponse.json();
-        setTreatmentPlan(treatmentData);
         if (treatmentData && treatmentData.length > 0) {
           setTreatmentPlan(treatmentData[0]);
         }
@@ -71,57 +71,64 @@ function Dashboard() {
   if (!userData || !treatmentPlan || !alignerInfo) return <div>Loading...</div>;
 
   return (
-    <Container fluid>
-      <Row>
-        {/* Sidebar */}
-        <Col
-          md={3}
-          className="sidebar"
-          style={{ backgroundColor: "lightblue" }}
-        >
-          <h2>{userData.username}</h2>
-          <ul>
-            <li>Dashboard</li>
-            <li>Settings</li>
-          </ul>
-        </Col>
+    <>
+      {" "}
+      <Container fluid>
+        <Row>
+          {/* Sidebar */}
+          <Col
+            md={3}
+            className="sidebar"
+            style={{ backgroundColor: "lightblue" }}
+          >
+            <h2>{userData.username}</h2>
+            <ul>
+              <li>Dashboard</li>
+              <li>Settings</li>
+            </ul>
+          </Col>
 
-        {/* Main Content */}
-        <Col md={9}>
-          <Row>
-            {/* Card 1: Treatment Time Remaining */}
-            <Col md={4}>
-              <Card>
-                <Card.Body>
-                  <Card.Title>Treatment Time Remaining</Card.Title>
-                  <Card.Text>{treatmentTimeRemaining} weeks</Card.Text>{" "}
-                </Card.Body>
-              </Card>
-            </Col>
+          {/* Main Content */}
+          <Col md={9}>
+            <Row>
+              {/* Card 1: Treatment Time Remaining */}
+              <Col md={4}>
+                <Card>
+                  <Card.Body>
+                    <Card.Title>Treatment Time Remaining</Card.Title>
+                    <Card.Text>{treatmentTimeRemaining} weeks</Card.Text>{" "}
+                  </Card.Body>
+                </Card>
+              </Col>
 
-            {/* Card 2: Next Aligner Switch */}
-            <Col md={4}>
-              <Card>
-                <Card.Body>
-                  <Card.Title>Next Aligner Switch</Card.Title>
-                  <Card.Text>{nextAlignerSwitchDate}</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
+              {/* Card 2: Next Aligner Switch */}
+              <Col md={4}>
+                <Card>
+                  <Card.Body>
+                    <Card.Title>Next Aligner Switch</Card.Title>
+                    <Card.Text>{nextAlignerSwitchDate}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
 
-            {/* Card 3: New Smile ETA */}
-            <Col md={4}>
-              <Card>
-                <Card.Body>
-                  <Card.Title>New Smile ETA</Card.Title>
-                  <Card.Text>{alignerEndDate}</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+              {/* Card 3: New Smile ETA */}
+              <Col md={4}>
+                <Card>
+                  <Card.Body>
+                    <Card.Title>New Smile ETA</Card.Title>
+                    <Card.Text>{alignerEndDate}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+      <AlignerCalendar
+        aligners={alignerInfo}
+        startDate={treatmentPlan.start_date}
+      />
+    </>
   );
 }
 
