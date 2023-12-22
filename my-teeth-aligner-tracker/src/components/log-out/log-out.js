@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-// This could be in your Dashboard component or wherever your logout button is
 function Logout() {
   const navigate = useNavigate();
 
