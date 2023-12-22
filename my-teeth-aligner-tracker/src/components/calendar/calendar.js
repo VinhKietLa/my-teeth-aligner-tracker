@@ -25,12 +25,20 @@ const AlignerCalendar = ({ aligners, startDate }) => {
   // Function to determine tile content based on aligner dates
   const tileContent = ({ date, view }) => {
     if (view === "month") {
+      const nextAlignerChange = alignerDates.find(
+        (aligner) => aligner.startDate > today
+      )?.startDate;
       for (const aligner of alignerDates) {
         if (date >= aligner.startDate && date <= aligner.endDate) {
           if (date < today) {
             return <div className="calendar-tile aligner-completed"></div>;
           } else if (date.toDateString() === today.toDateString()) {
             return <div className="calendar-tile aligner-current"></div>;
+          } else if (
+            nextAlignerChange &&
+            date.toDateString() === nextAlignerChange.toDateString()
+          ) {
+            return <div className="calendar-tile aligner-next-switch"></div>;
           } else {
             return <div className="calendar-tile aligner-upcoming"></div>;
           }

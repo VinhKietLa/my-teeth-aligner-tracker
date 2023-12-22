@@ -1,0 +1,26 @@
+.dashboard-container {
+  display: flex;
+  padding: 0 !important;
+}
+
+.sidebar {
+  background-color: #217380;
+  height: 100vh;
+}
+
+.main-content {
+  margin-top: 2rem;
+  flex-grow: 1;
+}
+
+.treatment-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  margin-left: 1rem !important;
+}
+
+.aligner-calendar {
+  width: 100%;
+  margin-left: 1rem !important;
+}

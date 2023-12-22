@@ -1,6 +1,5 @@
 .calendar-tile {
-  position: relative;
-  height: 100%;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,4 +15,15 @@
 
 .aligner-upcoming {
   background-color: red; /* Red for upcoming weeks */
+}
+
+.aligner-next-switch {
+  background-color: blue; /* Blue for the next aligner date change */
+}
+
+.react-calendar {
+  margin-top: 5rem;
+  width: 100%;
+  border: 1px solid black;
+  height: 500px;
 }
