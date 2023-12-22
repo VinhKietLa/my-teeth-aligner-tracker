@@ -11,14 +11,18 @@ function TreatmentUpdate() {
   const [numberOfAligners, setNumberOfAligners] = useState(1);
   const [alignerWeeks, setAlignerWeeks] = useState({});
   const [alignerInfo, setAlignerInfo] = useState(null);
-  useEffect(() => {
-    const fetchUserData = async () => {
-      console.log("Fetching data...");
-      // Existing fetch logic
-    };
 
-    fetchUserData();
-  }, []);
+  const alignerOptions = () => {
+    let options = [];
+    for (let i = 1; i <= 20; i++) {
+      options.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
+    }
+    return options;
+  };
 
   useEffect(() => {
     // Fetch User Data
@@ -50,8 +54,8 @@ function TreatmentUpdate() {
           { headers }
         );
         const alignerData = await alignerResponse.json();
-        setAlignerInfo(alignerData);
-        console.log(alignerData);
+        setAlignerInfo(alignerData.length);
+        console.log(alignerData.length);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -133,11 +137,12 @@ function TreatmentUpdate() {
                 <Form.Label>Number of Aligners</Form.Label>
 
                 <Form.Control
-                  type="email"
-                  placeholder="Email Address"
-                  value={numberOfAligners}
-                  onChange={(e) => setNumberOfAligners(e.target.value)}
-                />
+                  as="select"
+                  value={alignerInfo}
+                  //   onChange={handleAlignerChange}
+                >
+                  {alignerOptions()}
+                </Form.Control>
               </Form.Group>
 
               <Form.Group className="mb-3">
