@@ -5,12 +5,16 @@ import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 
 function TreatmentUpdate() {
+  const [treatmentPlanId, setTreatmentPlanId] = useState(null);
+
   const [treatmentData, setTreatmentData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   const [startDate, setStartDate] = useState(new Date());
   const [numberOfAligners, setNumberOfAligners] = useState(1);
   const [alignerWeeks, setAlignerWeeks] = useState({});
-  const [alignerInfo, setAlignerInfo] = useState(null);
+
+  const [aligners, setAligners] = useState([]);
 
   const alignerOptions = () => {
     let options = [];
@@ -23,9 +27,68 @@ function TreatmentUpdate() {
     }
     return options;
   };
+  const handleAlignerChange = (event) => {
+    const newNumberOfAligners = parseInt(event.target.value, 10);
+    setNumberOfAligners(newNumberOfAligners);
+
+    // Initialize state for all aligners
+    setAlignerWeeks((prevAlignerWeeks) => {
+      const newAlignerWeeks = { ...prevAlignerWeeks };
+      // Add default week values for new aligners
+      for (let i = 1; i <= newNumberOfAligners; i++) {
+        if (!newAlignerWeeks[i]) {
+          newAlignerWeeks[i] = 1;
+        }
+      }
+      // Remove week values for aligners that no longer exist
+      Object.keys(newAlignerWeeks).forEach((key) => {
+        if (parseInt(key, 10) > newNumberOfAligners) {
+          delete newAlignerWeeks[key];
+        }
+      });
+      return newAlignerWeeks;
+    });
+  };
+  const handleWeekChange = (aligner, weeks) => {
+    setAlignerWeeks((prevAlignerWeeks) => ({
+      ...prevAlignerWeeks,
+      [aligner]: parseInt(weeks, 10),
+    }));
+  };
+
+  const renderAlignerInputs = () => {
+    let inputs = [];
+    for (let i = 1; i <= numberOfAligners; i++) {
+      inputs.push(
+        <Form.Group
+          key={i}
+          as={Row}
+          className="mb-3"
+          controlId={`aligner-${i}`}
+        >
+          <Form.Label column sm={6}>
+            Aligner {i} Duration (weeks):
+          </Form.Label>
+          <Col sm={6}>
+            <Form.Control
+              as="select"
+              value={alignerWeeks[i] || ""}
+              onChange={(e) => handleWeekChange(i, e.target.value)}
+            >
+              {alignerOptions()}
+            </Form.Control>
+          </Col>
+        </Form.Group>
+      );
+    }
+    return inputs;
+  };
+  useEffect(() => {
+    console.log("Updated Treatment Plan ID:", treatmentPlanId);
+  }, [treatmentPlanId]);
 
   useEffect(() => {
-    // Fetch User Data
+    // Fetch Existing treatmentplan Data
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -40,9 +103,10 @@ function TreatmentUpdate() {
           }
         );
         const treatmentData = await treatmentResponse.json();
-        console.log(treatmentData);
         if (treatmentData && treatmentData.length > 0) {
           setTreatmentData(treatmentData[0]);
+          setTreatmentPlanId(treatmentData[0].id);
+          console.log(treatmentData[0]);
           const startDateValue = new Date(treatmentData[0].start_date);
           if (!isNaN(startDateValue)) {
             setStartDate(startDateValue);
@@ -54,8 +118,21 @@ function TreatmentUpdate() {
           { headers }
         );
         const alignerData = await alignerResponse.json();
-        setAlignerInfo(alignerData.length);
-        console.log(alignerData.length);
+
+        setNumberOfAligners(alignerData.length);
+        console.log(alignerData);
+
+        const newAlignerWeeks = {};
+        const alignersArray = [];
+        alignerData.forEach((aligner, index) => {
+          newAlignerWeeks[index + 1] = aligner.duration_weeks;
+          alignersArray.push({
+            id: aligner.id,
+            duration_weeks: aligner.duration_weeks,
+          });
+        });
+        setAlignerWeeks(newAlignerWeeks);
+        setAligners(alignersArray);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -72,24 +149,39 @@ function TreatmentUpdate() {
       "Content-Type": "application/json",
     };
 
-    const body = JSON.stringify({
-      user: {
-        // username: username,
-        // email: email,
-      },
-    });
+    const updatedAlignersAttributes = Object.entries(alignerWeeks).map(
+      ([index, weeks]) => {
+        const alignerId = aligners[parseInt(index) - 1]?.id;
+        return { id: alignerId, duration_weeks: weeks };
+      }
+    );
 
-    try {
-      const userResponse = await fetch("http://localhost:3000/api/user", {
-        method: "PATCH",
-        headers: headers,
-        body: body,
+    for (let i = numberOfAligners; i < aligners.length; i++) {
+      updatedAlignersAttributes.push({
+        id: aligners[i].id,
+        _destroy: "1",
       });
+    }
+
+    const updatedTreatmentData = {
+      start_date: startDate.toISOString(),
+      aligners_attributes: updatedAlignersAttributes,
+    };
+    try {
+      console.log(treatmentPlanId);
+      const userResponse = await fetch(
+        `http://localhost:3000/api/treatment_plans/${treatmentPlanId}`,
+        {
+          method: "PATCH",
+          headers: headers,
+          body: JSON.stringify({ treatment_plan: updatedTreatmentData }),
+        }
+      );
       const updatedUserData = await userResponse.json();
       if (!userResponse.ok) {
         throw new Error(`Error: ${userResponse.status}`);
       }
-      //   setUserData(updatedUserData); // Update state with the new user data
+      setUserData(updatedUserData);
     } catch (error) {
       console.error("Error updating data:", error);
     }
@@ -138,23 +230,14 @@ function TreatmentUpdate() {
 
                 <Form.Control
                   as="select"
-                  value={alignerInfo}
-                  //   onChange={handleAlignerChange}
+                  value={numberOfAligners}
+                  onChange={handleAlignerChange}
                 >
                   {alignerOptions()}
                 </Form.Control>
               </Form.Group>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Aligner Duration</Form.Label>
-
-                <Form.Control
-                  type="email"
-                  placeholder="Email Address"
-                  value={alignerWeeks}
-                  onChange={(e) => setAlignerWeeks(e.target.value)}
-                />
-              </Form.Group>
+              {renderAlignerInputs()}
 
               <div className="d-grid gap-2">
                 <Button variant="primary" size="lg" type="submit">
