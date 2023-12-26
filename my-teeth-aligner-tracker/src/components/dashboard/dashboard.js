@@ -79,12 +79,7 @@ function Dashboard() {
   return (
     <>
       {" "}
-      <Navbar
-        collapseOnSelect
-        expand="lg"
-        variant="light"
-        className="d-md-none nav-bg-custom"
-      >
+      <Navbar collapseOnSelect expand="lg" className="d-md-none nav-bg-custom">
         <Navbar.Brand href="#home">
           <img
             src={logo}
@@ -107,7 +102,7 @@ function Dashboard() {
       </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col md={2} className="sidebar d-none d-md-block">
+        <Col lg={2} className="sidebar d-none d-md-block">
           <h2 className="dashboard-name">{userData.username}</h2>
           <ul>
             <Link to="/profile">
@@ -122,7 +117,7 @@ function Dashboard() {
         </Col>
 
         {/* Main Content */}
-        <Col sm={12} lg={10} className="main-content">
+        <Col sm={12} lg={8} className="main-content">
           {/* Treatment Information */}
           <Row className="treatment-info">
             <h1>Your Smile Journey</h1>
@@ -160,7 +155,7 @@ function Dashboard() {
 
           {/* Calendar */}
           <Row className="aligner-calendar">
-            <Col>
+            <Col sm={12} lg={12}>
               <AlignerCalendar
                 aligners={alignerInfo}
                 startDate={treatmentPlan.start_date}

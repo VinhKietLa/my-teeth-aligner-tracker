@@ -1,42 +1,7 @@
-.dashboard-name {
-  font-size: 2rem;
-}
-
-.dashboard-container {
-  display: flex;
-  padding: 0 !important;
-  flex-wrap: nowrap;
-}
-
+/* Sidebar styles */
 .sidebar {
   background-color: #217380;
-  list-style: none;
-  color: white;
 }
-
-.main-content {
-  border: solid 1px black;
-}
-.main-content .treatment-info h1 {
-  font-size: 2rem;
-}
-.main-content .treatment-info span {
-  font-size: 1rem;
-}
-
-.treatment-remaining-card,
-.next-aligner-card,
-.smile-eta-card {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.treatment-info {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-/* Sidebar styles */
 .sidebar ul {
   list-style: none;
   font-size: 1.25rem;
@@ -45,36 +10,70 @@
 .sidebar a {
   color: white;
   text-decoration: none;
+  padding-bottom: 1rem;
 }
 
-.sidebar .sidebar a:hover {
+.sidebar a:hover {
   text-decoration: underline;
 }
 
 /* Nabar styles */
-.nav-bg-custom {
+nav.nav-bg-custom {
   background-color: #217380;
+  padding-left: 1rem;
 }
 
 .nav-bg-custom .navbar-brand,
 .nav-bg-custom .navbar-collapse .navbar-nav a {
   color: white;
 }
+.navbar-nav a:hover {
+  text-decoration: underline;
+}
 
-@media (max-width: 768px) {
-  .main-content .treatment-info h1 {
-    font-size: 4rem;
+/* Dashboard content styles */
+
+.dashboard-container {
+  display: flex;
+}
+
+.main-content {
+  margin-top: 1rem;
+}
+
+.main-content .treatment-info h1 {
+  font-size: 4rem;
+}
+
+.main-content .treatment-info span {
+  font-size: 1.5rem;
+}
+
+.treatment-remaining-card,
+.next-aligner-card,
+.smile-eta-card {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  .dashboard-container {
+    padding: 0 !important;
+    flex-wrap: nowrap;
   }
 
-  .main-content .treatment-info span {
+  .sidebar {
+    padding-top: 1rem;
+  }
+  .sidebar .dashboard-name {
     font-size: 1.5rem;
+    padding-left: 2rem;
+    color: white;
+    font-weight: bold;
   }
-
-  .treatment-remaining-card,
-  .next-aligner-card,
-  .smile-eta-card {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    font-size: 2rem;
+  .main-content .treatment-info,
+  .main-content .aligner-calendar {
+    margin-left: 2rem;
   }
 }
