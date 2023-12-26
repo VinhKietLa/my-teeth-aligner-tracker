@@ -8,3 +8,13 @@
   font-size: 1.5rem;
   border-color: #83c5dc;
 }
+
+.container .contact-us-title {
+  text-align: center;
+}
+
+@media (min-width: 769px) {
+  .container .contact-us-title {
+    text-align: left;
+  }
+}

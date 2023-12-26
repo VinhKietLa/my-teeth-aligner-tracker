@@ -5,9 +5,7 @@ import "./contact.css";
 function ContactUs() {
   return (
     <Container className="my-5">
-      <h2 style={{ textAlign: "left" }} className="mb-5">
-        Contact Us
-      </h2>
+      <h2 className="mb-5 contact-us-title">Contact Us</h2>
 
       <Form className="form-section">
         <Row>
