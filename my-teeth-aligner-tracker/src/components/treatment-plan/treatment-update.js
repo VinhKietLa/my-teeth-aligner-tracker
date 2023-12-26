@@ -3,6 +3,10 @@ import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import Logout from "../log-out/log-out";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
+import logo from "../navbar/logo.png";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import "./treatment-update.css";
 
 function TreatmentUpdate() {
   const [treatmentPlanId, setTreatmentPlanId] = useState(null);
@@ -20,7 +24,7 @@ function TreatmentUpdate() {
     let options = [];
     for (let i = 1; i <= 20; i++) {
       options.push(
-        <option key={i} value={i}>
+        <option className="option-style" key={i} value={i}>
           {i}
         </option>
       );
@@ -74,6 +78,7 @@ function TreatmentUpdate() {
               as="select"
               value={alignerWeeks[i] || ""}
               onChange={(e) => handleWeekChange(i, e.target.value)}
+              id="input-style"
             >
               {alignerOptions()}
             </Form.Control>
@@ -96,6 +101,13 @@ function TreatmentUpdate() {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         };
+
+        const userResponse = await fetch("http://localhost:3000/api/user", {
+          headers,
+        });
+        const userData = await userResponse.json();
+        setUserData(userData);
+
         const treatmentResponse = await fetch(
           "http://localhost:3000/api/treatment_plans",
           {
@@ -192,13 +204,34 @@ function TreatmentUpdate() {
   return (
     <>
       {" "}
+      <Navbar collapseOnSelect expand="lg" className="d-md-none nav-bg-custom">
+        <Navbar.Brand href="#home">
+          <img
+            src={logo}
+            width="30"
+            height="30"
+            className="d-inline-block align-top nav-logo"
+            alt="Logo"
+          />{" "}
+          SmileMinder
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#profile">Profile</Nav.Link>
+            <Nav.Link href="#dashboard">Dashboard</Nav.Link>
+            <Nav.Link href="#treatment-update">Treatment Plan</Nav.Link>
+            <Nav.Link href="#logout">{<Logout />}</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col md={3} className="sidebar">
-          <h2>{treatmentData.username}</h2>
+        <Col md={3} className="sidebar d-none d-md-block">
+          <h2 className="dashboard-name">{userData.username}</h2>
           <ul>
             <Link to="/profile">
-              <li>Your profile</li>
+              <li>Profile</li>
             </Link>
             <Link to="/dashboard">
               <li>Dashboard</li>
@@ -209,9 +242,9 @@ function TreatmentUpdate() {
         </Col>
 
         {/* Main Content */}
-        <Col md={9} className="main-content">
+        <Col md={9} className="main-content treatment-container">
           <Row>
-            <h1>Your Treatment Plan</h1>
+            <h1>Your treatment plan</h1>
             <h2>Edit your plan</h2>
             <Form onSubmit={handleSubmit}>
               <Form.Group as={Row} className="mb-3">
@@ -222,6 +255,7 @@ function TreatmentUpdate() {
                   <DatePicker
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
+                    id="input-style"
                   />
                 </Col>
               </Form.Group>
@@ -232,6 +266,7 @@ function TreatmentUpdate() {
                   as="select"
                   value={numberOfAligners}
                   onChange={handleAlignerChange}
+                  id="input-style"
                 >
                   {alignerOptions()}
                 </Form.Control>
@@ -240,50 +275,11 @@ function TreatmentUpdate() {
               {renderAlignerInputs()}
 
               <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" type="submit">
+                <Button size="lg" type="submit" className="save-changes-btn">
                   Save changes{" "}
                 </Button>
               </div>
             </Form>
-
-            {/* <Form onSubmit={handlePasswordChangeSubmit}>
-              <h2>Change password</h2>
-              <Form.Group className="mb-3">
-                <Form.Label>Old password</Form.Label>
-
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={oldPassword}
-                  onChange={(e) => setOldPassword(e.target.value)}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Confirm new password</Form.Label>
-
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Confirm new password</Form.Label>
-
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={confirmNewPassword}
-                  onChange={(e) => setConfirmNewPassword(e.target.value)}
-                />
-              </Form.Group>
-              <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" type="submit">
-                  Change password{" "}
-                </Button>
-              </div>
-            </Form> */}
           </Row>
         </Col>
       </Container>

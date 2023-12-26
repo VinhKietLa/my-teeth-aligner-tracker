@@ -21,7 +21,9 @@ import TreatmentUpdate from "./components/treatment-plan/treatment-update";
 const NavbarWrapper = () => {
   const location = useLocation();
   const showNavbar =
-    location.pathname !== "/dashboard" && location.pathname !== "/profile";
+    location.pathname !== "/dashboard" &&
+    location.pathname !== "/profile" &&
+    location.pathname !== "/treatment-update";
   return <>{showNavbar && <MyNavbar />}</>;
 };
 function App() {

@@ -17,20 +17,6 @@
   text-decoration: underline;
 }
 
-/* Nabar styles */
-nav.nav-bg-custom {
-  background-color: #217380;
-  padding-left: 1rem;
-}
-
-.nav-bg-custom .navbar-brand,
-.nav-bg-custom .navbar-collapse .navbar-nav a {
-  color: white;
-}
-.navbar-nav a:hover {
-  text-decoration: underline;
-}
-
 /* Dashboard content styles */
 
 .dashboard-container {
@@ -41,20 +27,25 @@ nav.nav-bg-custom {
   margin-top: 1rem;
 }
 
-.main-content .treatment-info h1 {
+.main-content h1 {
   font-size: 4rem;
 }
 
-.main-content .treatment-info span {
+.main-content span {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.treatment-remaining-card,
-.next-aligner-card,
-.smile-eta-card {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  font-size: 2rem;
+.main-content .save-changes-btn,
+.main-content .change-password-btn {
+  background-color: #83c5dc;
+  border-color: #83c5dc;
+}
+
+.main-content .save-changes-btn:hover,
+.main-content .change-password-btn:hover {
+  background-color: black;
+  border-color: black;
 }
 
 @media (min-width: 768px) {
@@ -72,7 +63,9 @@ nav.nav-bg-custom {
     color: white;
     font-weight: bold;
   }
-  .main-content {
+  .treatment-container {
     margin-left: 2rem;
+    max-width: 500px;
+    margin-bottom: 2rem;
   }
 }

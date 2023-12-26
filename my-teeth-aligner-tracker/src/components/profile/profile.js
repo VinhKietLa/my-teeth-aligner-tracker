@@ -145,9 +145,7 @@ function Profile() {
         <Col lg={2} className="sidebar d-none d-md-block">
           <h2 className="dashboard-name">{userData.username}</h2>
           <ul>
-            <Link to="/profile">
-              <li>Your profile</li>
-            </Link>
+            <li>Profile</li>
             <Link to="/dashboard">
               <li>Dashboard</li>
             </Link>

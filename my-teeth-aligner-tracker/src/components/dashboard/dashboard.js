@@ -32,7 +32,6 @@ function Dashboard() {
         });
         const userData = await userResponse.json();
         setUserData(userData);
-        console.log(userData);
 
         const treatmentResponse = await fetch(
           "http://localhost:3000/api/treatment_plans",
@@ -43,14 +42,12 @@ function Dashboard() {
           setTreatmentPlan(treatmentData[0]);
         }
 
-        console.log(treatmentData);
         const alignerResponse = await fetch(
           "http://localhost:3000/api/aligners",
           { headers }
         );
         const alignerData = await alignerResponse.json();
         setAlignerInfo(alignerData);
-        console.log(alignerData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -102,7 +99,7 @@ function Dashboard() {
       </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col lg={2} className="sidebar d-none d-md-block">
+        <Col md={3} className="sidebar d-none d-md-block">
           <h2 className="dashboard-name">{userData.username}</h2>
           <ul>
             <Link to="/profile">
