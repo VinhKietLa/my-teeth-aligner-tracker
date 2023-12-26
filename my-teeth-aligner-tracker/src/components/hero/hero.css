@@ -20,6 +20,13 @@
 .hero-section .get-started-btn {
   background-color: #83c5dc;
   font-size: 1.5rem;
+  border-color: #83c5dc;
+}
+
+.hero-section .get-started-btn:hover {
+  background-color: black;
+  font-size: 1.5rem;
+  border-color: black;
 }
 
 .hero-section .hero-title-and-btn {

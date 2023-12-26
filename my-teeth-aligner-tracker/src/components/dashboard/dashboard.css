@@ -28,3 +28,17 @@
 .react-calendar {
   height: 100%;
 }
+
+.sidebar {
+  list-style: none;
+  color: white;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}

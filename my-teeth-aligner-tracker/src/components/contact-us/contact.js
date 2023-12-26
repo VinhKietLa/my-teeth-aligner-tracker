@@ -30,13 +30,13 @@ function ContactUs() {
             {/* Adjust 'md={8}' as needed */}
             <Row className="mb-3">
               <Col sm>
-                <Form.Group controlId="formGridName">
+                <Form.Group controlId="formGridName" className="mb-3">
                   <Form.Label>Your Name</Form.Label>
                   <Form.Control type="text" placeholder="Enter name" />
                 </Form.Group>
               </Col>
               <Col sm>
-                <Form.Group controlId="formGridEmail">
+                <Form.Group controlId="formGridEmail" className="mb-3">
                   <Form.Label>Your Email</Form.Label>
                   <Form.Control type="email" placeholder="Enter email" />
                 </Form.Group>
@@ -52,7 +52,7 @@ function ContactUs() {
             </Row>
             <Row className="mb-3">
               <Col>
-                <Form.Group controlId="formGridMessage">
+                <Form.Group controlId="formGridMessage" className="mb-3">
                   <Form.Label>Message</Form.Label>
                   <Form.Control
                     as="textarea"

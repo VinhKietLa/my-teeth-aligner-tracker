@@ -19,7 +19,7 @@ function MyNavbar() {
             className="d-inline-block align-top nav-logo"
             alt="Logo"
           />
-          <Link to="/">
+          <Link to="/" className="nav-smile-minder">
             <span style={{ color: "white", fontWeight: "bold" }}>
               SmileMinder
             </span>
