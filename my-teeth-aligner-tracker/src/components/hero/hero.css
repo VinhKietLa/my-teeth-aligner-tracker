@@ -11,7 +11,7 @@
   text-align: center;
   background-image: url("hero_mobile.png");
   align-items: flex-start;
-  background-color: #ebf7ff;
+  background-color: #effafd;
 }
 
 .hero-title {
@@ -46,14 +46,14 @@
 @media (min-width: 768px) {
   .hero-section {
     text-align: left;
-    background-size: cover;
+    background-size: contain;
     background-image: url("hero.png");
     align-items: center;
     flex-direction: column;
   }
 
   .hero-title {
-    font-size: 5rem;
+    font-size: 2.5rem;
   }
 
   .hero-section .hero-title-and-btn {

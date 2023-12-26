@@ -1,9 +1,10 @@
 import React from "react";
-import { Form, Row, Col, Button, Container } from "react-bootstrap";
-import "./sign-up.css"; // Make sure to include the path to your CSS file
+import { Form, Row, Col, Button, Container, Image } from "react-bootstrap";
+import "./sign-up.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import peopleImages from "./aligners.png";
 
 async function fetchCsrfToken() {
   const response = await fetch("http://localhost:3000/csrf", {
@@ -53,7 +54,10 @@ function SignUp() {
     }
   };
   return (
-    <Container className="d-flex justify-content-center align-items-center vh-100">
+    <Container className="d-flex flex-column justify-content-center align-items-center vh-100">
+      <Row>
+        <Image src={peopleImages} alt="People eating" fluid></Image>
+      </Row>
       <Row className="w-100">
         <Col xs={12} md={12} className="mx-auto">
           <div className="signup-form-wrapper">

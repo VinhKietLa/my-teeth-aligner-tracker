@@ -13,6 +13,12 @@
 
 .navbar .get-started-btn {
   background-color: #83c5dc;
+  border-color: #83c5dc;
+}
+
+.navbar .get-started-btn:hover {
+  background-color: black;
+  border-color: black;
 }
 
 .nav-smile-minder {

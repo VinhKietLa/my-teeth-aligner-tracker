@@ -1,9 +1,10 @@
 // LoginForm.js
 import React, { useState } from "react";
-import { Form, Row, Col, Button, Container } from "react-bootstrap";
+import { Form, Row, Col, Button, Container, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { Link } from "react-router-dom";
+import loginImg from "./log-in.png";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -31,10 +32,13 @@ function LoginForm() {
   };
 
   return (
-    <Container className="d-flex justify-content-center align-items-center vh-100">
+    <Container className="d-flex flex-column justify-content-center align-items-center vh-100">
+      <Row>
+        <Image src={loginImg} alt="People holding aligners" fluid></Image>
+      </Row>
       <Row className="w-100">
         <Col xs={12} md={12} className="mx-auto">
-          <div className="signup-form-wrapper">
+          <div className="login-form-wrapper">
             <h2 className="text-center mb-4">Sign in to SmileMinder</h2>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3">

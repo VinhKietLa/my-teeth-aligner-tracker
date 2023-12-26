@@ -13,8 +13,14 @@
   text-align: center;
 }
 
+.container .contact-us-btn:hover {
+  background-color: black;
+  border-color: black;
+}
+
 @media (min-width: 769px) {
   .container .contact-us-title {
     text-align: left;
+    font-size: 2rem;
   }
 }

@@ -1,10 +1,18 @@
-.hero-section .get-started-btn {
-  background-color: #83c5dc;
-  font-size: 1.5rem;
-}
-
 .aligner-img,
 .reminders-img,
 .benefits-img {
   margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .benefits-title {
+    font-size: 2rem;
+  }
+  .benefit-sections h3 {
+    font-size: 1.5rem;
+  }
+
+  .benefit-sections p {
+    font-size: 1rem;
+  }
 }

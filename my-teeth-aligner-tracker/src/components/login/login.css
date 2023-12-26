@@ -1,40 +1,38 @@
 .signup-form-wrapper {
-  background-color: #f0f0f0; /* Adjust the background color as needed */
+  padding: 1rem;
+  background-color: #effafd;
+}
+
+.mx-auto h2 {
+  font-size: 3rem;
+}
+
+div .input-styles {
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 2rem;
 }
 
-/* Adjust the height of the container to take up the full viewport height */
-.vh-100 {
-  min-height: 100vh;
+div .btn-style {
+  background-color: #83c5dc;
+  border-color: #83c5dc;
 }
 
-/* Optionally, you can add more responsive behavior */
-@media (max-width: 768px) {
-  .signup-form-wrapper {
-    padding: 1rem;
-  }
-
-  .mx-auto h2 {
-    font-size: 3rem;
-  }
-
-  div .input-styles {
+div .btn-style:hover {
+  background-color: black;
+  border-color: black;
+}
+.sign-in {
+  font-size: 2rem;
+  text-decoration: none;
+}
+.sign-in a {
+  font-weight: bold;
+  color: #83c5dc;
+}
+@media (min-width: 768px) {
+  .login-form-wrapper {
     padding: 2rem;
-    font-size: 2rem;
-  }
-
-  div .btn-style:hover {
-    background-color: black;
-    border-color: black;
-  }
-  .sign-in {
-    font-size: 2rem;
-    text-decoration: none;
-  }
-  .sign-in a {
-    font-weight: bold;
-    color: #83c5dc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 }

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 function MyNavbar() {
   return (
-    <Navbar expand="lg" className="nav-bg-custom">
+    <Navbar expand="md" className="nav-bg-custom">
       <Container>
         <Navbar.Brand href="#home nav-title">
           <img

@@ -8,11 +8,11 @@ import "./benefits.css";
 function BenefitsSection() {
   return (
     <Container className="text-center my-5">
-      <h2>Why Choose Our Aligner Tracker</h2>
+      <h2 className="benefits-title">Why Choose Our Aligner Tracker</h2>
 
-      <Row className="my-4">
+      <Row className="my-4 benefit-sections">
         {/* Section 1 */}
-        <Col md={4} sm={12} className="my-3">
+        <Col md={4} className="my-3">
           <h3>Track Your Aligners</h3>
           <Image
             src={alignerImage}
@@ -28,7 +28,7 @@ function BenefitsSection() {
         </Col>
 
         {/* Section 2 */}
-        <Col md={4} sm={12} className="my-3">
+        <Col md={4} className="my-3">
           <h3>Reminders</h3>
           <Image
             src={reminderBenfits}
@@ -43,7 +43,7 @@ function BenefitsSection() {
         </Col>
 
         {/* Section 3 */}
-        <Col md={4} sm={12} className="my-3">
+        <Col md={4} className="my-3">
           <h3>Dashboard</h3>
           <Image
             src={dashboardBenefits}
