@@ -142,8 +142,8 @@ function Profile() {
       </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col md={3} className="sidebar d-none d-md-block">
-          <h2>{userData.username}</h2>
+        <Col lg={2} className="sidebar d-none d-md-block">
+          <h2 className="dashboard-name">{userData.username}</h2>
           <ul>
             <Link to="/profile">
               <li>Your profile</li>
@@ -159,7 +159,7 @@ function Profile() {
         </Col>
 
         {/* Main Content */}
-        <Col md={9} className="main-content">
+        <Col md={9} className="main-content profile-content">
           <Row>
             <h1>Your profile</h1>
             <span>Details</span>

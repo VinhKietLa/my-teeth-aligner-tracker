@@ -72,8 +72,4 @@ nav.nav-bg-custom {
     color: white;
     font-weight: bold;
   }
-  .main-content .treatment-info,
-  .main-content .aligner-calendar {
-    margin-left: 2rem;
-  }
 }

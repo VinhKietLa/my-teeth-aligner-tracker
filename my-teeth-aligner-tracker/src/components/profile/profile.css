@@ -63,8 +63,8 @@
     color: white;
     font-weight: bold;
   }
-  .main-content .treatment-info,
-  .main-content .aligner-calendar {
+  .profile-content {
     margin-left: 2rem;
+    max-width: 500px;
   }
 }
