@@ -6,9 +6,10 @@ import { calculateEndOfTreatment } from "../treatmentCalculations/treatmentCalcu
 import AlignerCalendar from "../calendar/calendar";
 import "./dashboard.css";
 import Logout from "../log-out/log-out";
-import Profile from "../profile/profile";
 import { Link } from "react-router-dom";
-import TreatmentUpdate from "../treatment-plan/treatment-update";
+import logo from "../navbar/logo.png";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
@@ -78,9 +79,35 @@ function Dashboard() {
   return (
     <>
       {" "}
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        variant="light"
+        className="d-md-none nav-bg-custom"
+      >
+        <Navbar.Brand href="#home">
+          <img
+            src={logo}
+            width="30"
+            height="30"
+            className="d-inline-block align-top nav-logo"
+            alt="Logo"
+          />{" "}
+          SmileMinder
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#profile">Profile</Nav.Link>
+            <Nav.Link href="#dashboard">Dashboard</Nav.Link>
+            <Nav.Link href="#treatment-update">Treatment Plan</Nav.Link>
+            <Nav.Link href="#logout">{<Logout />}</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col md={3} className="sidebar">
+        <Col md={3} className="sidebar d-none d-md-block">
           <h2>{userData.username}</h2>
           <ul>
             <Link to="/profile">
@@ -95,14 +122,14 @@ function Dashboard() {
         </Col>
 
         {/* Main Content */}
-        <Col md={9} className="main-content">
+        <Col sm={12} className="main-content">
           {/* Treatment Information */}
           <Row className="treatment-info">
             <h1>Your Smile Journey</h1>
             <span>Track your progress</span>
             {/* Treatment Time Remaining */}
-            <Col md={4}>
-              <Card>
+            <Col md={12}>
+              <Card className="treatment-remaining-card">
                 <Card.Body>
                   <Card.Title>Treatment Time Remaining</Card.Title>
                   <Card.Text>{treatmentTimeRemaining} weeks</Card.Text>
@@ -112,7 +139,7 @@ function Dashboard() {
 
             {/* Next Aligner Switch */}
             <Col md={4}>
-              <Card>
+              <Card className="next-aligner-card">
                 <Card.Body>
                   <Card.Title>Next Aligner Switch</Card.Title>
                   <Card.Text>{nextAlignerSwitchDate}</Card.Text>
@@ -122,7 +149,7 @@ function Dashboard() {
 
             {/* New Smile ETA */}
             <Col md={4}>
-              <Card>
+              <Card className="smile-eta-card">
                 <Card.Body>
                   <Card.Title>New Smile ETA</Card.Title>
                   <Card.Text>{alignerEndDate}</Card.Text>

@@ -6,11 +6,12 @@
 .sidebar {
   background-color: #217380;
   height: 100vh;
+  list-style: none;
+  color: white;
 }
 
 .main-content {
   margin-top: 2rem;
-  flex-grow: 1;
 }
 
 .treatment-info {
@@ -21,17 +22,11 @@
 }
 
 .aligner-calendar {
-  width: 100%;
-  margin-left: 1rem !important;
 }
 
 .react-calendar {
   height: 100%;
-}
-
-.sidebar {
-  list-style: none;
-  color: white;
+  max-width: 100%;
 }
 
 .sidebar a {
@@ -41,4 +36,38 @@
 
 .sidebar a:hover {
   text-decoration: underline;
+}
+
+/* Nabar styles */
+.nav-bg-custom {
+  background-color: #217380;
+}
+
+.nav-bg-custom .navbar-brand,
+.nav-bg-custom .navbar-collapse .navbar-nav a {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .treatment-info,
+  .aligner-calendar {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .main-content .treatment-info h1 {
+    font-size: 4rem;
+  }
+
+  .main-content .treatment-info span {
+    font-size: 1.5rem;
+  }
+
+  .treatment-remaining-card,
+  .next-aligner-card,
+  .smile-eta-card {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
 }
