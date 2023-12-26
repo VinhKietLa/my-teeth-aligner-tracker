@@ -107,8 +107,8 @@ function Dashboard() {
       </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col md={3} className="sidebar d-none d-md-block">
-          <h2>{userData.username}</h2>
+        <Col md={2} className="sidebar d-none d-md-block">
+          <h2 className="dashboard-name">{userData.username}</h2>
           <ul>
             <Link to="/profile">
               <li>Profile</li>
@@ -122,13 +122,13 @@ function Dashboard() {
         </Col>
 
         {/* Main Content */}
-        <Col sm={12} className="main-content">
+        <Col sm={12} lg={10} className="main-content">
           {/* Treatment Information */}
           <Row className="treatment-info">
             <h1>Your Smile Journey</h1>
             <span>Track your progress</span>
             {/* Treatment Time Remaining */}
-            <Col md={12}>
+            <Col sm={12} lg={4}>
               <Card className="treatment-remaining-card">
                 <Card.Body>
                   <Card.Title>Treatment Time Remaining</Card.Title>
@@ -138,7 +138,7 @@ function Dashboard() {
             </Col>
 
             {/* Next Aligner Switch */}
-            <Col md={4}>
+            <Col sm={12} lg={4}>
               <Card className="next-aligner-card">
                 <Card.Body>
                   <Card.Title>Next Aligner Switch</Card.Title>
@@ -148,7 +148,7 @@ function Dashboard() {
             </Col>
 
             {/* New Smile ETA */}
-            <Col md={4}>
+            <Col sm={12} lg={4}>
               <Card className="smile-eta-card">
                 <Card.Body>
                   <Card.Title>New Smile ETA</Card.Title>
@@ -160,10 +160,12 @@ function Dashboard() {
 
           {/* Calendar */}
           <Row className="aligner-calendar">
-            <AlignerCalendar
-              aligners={alignerInfo}
-              startDate={treatmentPlan.start_date}
-            />
+            <Col>
+              <AlignerCalendar
+                aligners={alignerInfo}
+                startDate={treatmentPlan.start_date}
+              />
+            </Col>
           </Row>
         </Col>
       </Container>

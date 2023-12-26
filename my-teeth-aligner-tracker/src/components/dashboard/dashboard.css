@@ -1,32 +1,45 @@
+.dashboard-name {
+  font-size: 2rem;
+}
+
 .dashboard-container {
   display: flex;
   padding: 0 !important;
+  flex-wrap: nowrap;
 }
 
 .sidebar {
   background-color: #217380;
-  height: 100vh;
   list-style: none;
   color: white;
 }
 
 .main-content {
-  margin-top: 2rem;
+  border: solid 1px black;
+}
+.main-content .treatment-info h1 {
+  font-size: 2rem;
+}
+.main-content .treatment-info span {
+  font-size: 1rem;
+}
+
+.treatment-remaining-card,
+.next-aligner-card,
+.smile-eta-card {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .treatment-info {
   display: flex;
-  justify-content: space-around;
   margin-bottom: 20px;
-  margin-left: 1rem !important;
 }
 
-.aligner-calendar {
-}
-
-.react-calendar {
-  height: 100%;
-  max-width: 100%;
+/* Sidebar styles */
+.sidebar ul {
+  list-style: none;
+  font-size: 1.25rem;
 }
 
 .sidebar a {
@@ -34,7 +47,7 @@
   text-decoration: none;
 }
 
-.sidebar a:hover {
+.sidebar .sidebar a:hover {
   text-decoration: underline;
 }
 
@@ -49,12 +62,6 @@
 }
 
 @media (max-width: 768px) {
-  .treatment-info,
-  .aligner-calendar {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
   .main-content .treatment-info h1 {
     font-size: 4rem;
   }

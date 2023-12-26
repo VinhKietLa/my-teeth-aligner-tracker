@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import heroImage from "./hero.png"; // Importing the hero image
 import "./hero.css";
 import heroImageMobile from "./hero_mobile.png"; // Mobile image
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
-    <div className="hero-section">
+    <Container className="hero-section">
       <div className="container">
         <div className="row">
           {" "}
@@ -24,7 +24,7 @@ function HeroSection() {
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

@@ -1,20 +1,24 @@
+/* Default mobile styles */
 .hero-section {
-  display: flex; /* Establish flex container */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   color: white;
-  min-height: 100vh; /* Full height of the viewport */
-  text-align: left; /* Align text to the left */
-  background-image: url("hero.png");
+  min-height: 50vh;
+  text-align: center;
+  background-image: url("hero_mobile.png");
+  align-items: flex-start;
+  background-color: #ebf7ff;
 }
 
 .hero-title {
   font-weight: bold;
+  margin-top: 3rem;
   margin-bottom: 3rem;
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .hero-section .get-started-btn {
@@ -25,26 +29,34 @@
 
 .hero-section .get-started-btn:hover {
   background-color: black;
-  font-size: 1.5rem;
   border-color: black;
 }
 
 .hero-section .hero-title-and-btn {
-  margin-bottom: 15rem;
+  margin-bottom: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
-
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hero-section {
-    background-image: url("hero_mobile.png");
-    flex-direction: row;
-    background-size: contain;
-    padding-top: 13rem;
-    text-align: center;
-    align-items: flex-start;
-    background-color: #ebf7ff;
+    max-width: 100% !important;
   }
 }
 
-/* have to do styling for viewports larger than 768px */
+@media (min-width: 768px) {
+  .hero-section {
+    text-align: left;
+    background-size: cover;
+    background-image: url("hero.png");
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .hero-title {
+    font-size: 5rem;
+  }
+
+  .hero-section .hero-title-and-btn {
+    margin-bottom: 15rem;
+  }
+}
