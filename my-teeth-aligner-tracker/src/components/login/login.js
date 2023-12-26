@@ -32,16 +32,21 @@ function LoginForm() {
   };
 
   return (
-    <Container className="d-flex flex-column justify-content-center align-items-center vh-100">
+    <Container className="d-flex flex-column justify-content-center align-items-center login-container">
       <Row>
-        <Image src={loginImg} alt="People holding aligners" fluid></Image>
+        <Image
+          src={loginImg}
+          alt="People holding aligners"
+          fluid
+          className="aligners-image-login"
+        ></Image>
       </Row>
       <Row className="w-100">
-        <Col xs={12} md={12} className="mx-auto">
+        <Col xs={12} md={8} className="mx-auto">
           <div className="login-form-wrapper">
             <h2 className="text-center mb-4">Sign in to SmileMinder</h2>
             <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-5">
                 <Form.Control
                   type="email"
                   placeholder="Email Address"
@@ -50,7 +55,7 @@ function LoginForm() {
                   className="input-styles"
                 />
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-5">
                 <Form.Control
                   type="text"
                   placeholder="Username"
@@ -59,7 +64,7 @@ function LoginForm() {
                   className="input-styles"
                 />
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-5">
                 <Form.Control
                   type="password"
                   placeholder="Password"
@@ -70,7 +75,6 @@ function LoginForm() {
               </Form.Group>
               <div className="d-grid gap-2">
                 <Button
-                  variant="primary"
                   size="lg"
                   type="submit"
                   className="input-styles btn-style"

@@ -1,3 +1,7 @@
+.sign-up-container {
+  min-height: 100vh;
+}
+
 .signup-form-wrapper {
   padding: 1rem;
   background-color: #effafd;
@@ -7,17 +11,17 @@
   font-size: 3rem;
 }
 
-div .input-styles {
+div .input-styles-sign-up {
   padding: 2rem;
   font-size: 2rem;
 }
 
-div .btn-style {
+div .btn-style-sign-up {
   background-color: #83c5dc;
   border-color: #83c5dc;
 }
 
-div .btn-style:hover {
+div .btn-style-sign-up:hover {
   background-color: black;
   border-color: black;
 }
@@ -34,5 +38,28 @@ div .btn-style:hover {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .w-100 .mx-auto h2 {
+    font-size: 2rem;
+  }
+  div .input-styles-sign-up {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  .btn-style-sign-up {
+    min-width: 300px;
+    margin: 0 auto;
+  }
+  .sign-up {
+    font-size: 1.25rem;
+  }
+  .aligners-image {
+    max-width: 600px;
+    max-height: 500px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
   }
 }

@@ -54,12 +54,17 @@ function SignUp() {
     }
   };
   return (
-    <Container className="d-flex flex-column justify-content-center align-items-center vh-100">
+    <Container className="d-flex flex-column justify-content-center align-items-center sign-up-container">
       <Row>
-        <Image src={peopleImages} alt="People eating" fluid></Image>
+        <Image
+          src={peopleImages}
+          alt="People eating"
+          fluid
+          className="aligners-image"
+        ></Image>
       </Row>
       <Row className="w-100">
-        <Col xs={12} md={12} className="mx-auto">
+        <Col xs={12} md={8} className="mx-auto">
           <div className="signup-form-wrapper">
             <h2 className="text-center mb-4">
               Start Tracking Your Aligners Today
@@ -71,7 +76,7 @@ function SignUp() {
                   placeholder="Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="input-styles"
+                  className="input-styles-sign-up"
                 />
               </Form.Group>
               <Form.Group className="mb-5">
@@ -80,7 +85,7 @@ function SignUp() {
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="input-styles"
+                  className="input-styles-sign-up"
                 />
               </Form.Group>
               <Form.Group className="mb-5">
@@ -89,15 +94,14 @@ function SignUp() {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="input-styles"
+                  className="input-styles-sign-up"
                 />
               </Form.Group>
               <div className="d-grid gap-2">
                 <Button
-                  variant="primary"
                   size="lg"
                   type="submit"
-                  className="input-styles btn-style"
+                  className="input-styles-sign-up btn-style-sign-up"
                 >
                   Sign Up
                 </Button>
