@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./login.css";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -31,7 +33,7 @@ function LoginForm() {
   return (
     <Container className="d-flex justify-content-center align-items-center vh-100">
       <Row className="w-100">
-        <Col md={6} className="mx-auto">
+        <Col xs={12} md={12} className="mx-auto">
           <div className="signup-form-wrapper">
             <h2 className="text-center mb-4">Sign in to SmileMinder</h2>
             <Form onSubmit={handleSubmit}>
@@ -41,6 +43,7 @@ function LoginForm() {
                   placeholder="Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="input-styles"
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -49,6 +52,7 @@ function LoginForm() {
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  className="input-styles"
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -57,16 +61,23 @@ function LoginForm() {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="input-styles"
                 />
               </Form.Group>
               <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" type="submit">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  type="submit"
+                  className="input-styles btn-style"
+                >
                   Sign in
                 </Button>
-
-                <Form.Text className="text-center">
-                  Don't have an account? <a href="#login">Sign up</a>
-                </Form.Text>
+                <Link to="/signup" className="sign-in">
+                  <Form.Text className="text-center sign-in">
+                    Don't have an account? <a href="#login">Sign up</a>
+                  </Form.Text>
+                </Link>
               </div>
             </Form>
           </div>

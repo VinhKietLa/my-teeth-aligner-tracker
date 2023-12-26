@@ -55,41 +55,49 @@ function SignUp() {
   return (
     <Container className="d-flex justify-content-center align-items-center vh-100">
       <Row className="w-100">
-        <Col md={6} className="mx-auto">
+        <Col xs={12} md={12} className="mx-auto">
           <div className="signup-form-wrapper">
             <h2 className="text-center mb-4">
               Start Tracking Your Aligners Today
             </h2>
             <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-5">
                 <Form.Control
                   type="email"
                   placeholder="Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="input-styles"
                 />
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-5">
                 <Form.Control
                   type="text"
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  className="input-styles"
                 />
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-5">
                 <Form.Control
                   type="password"
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="input-styles"
                 />
               </Form.Group>
               <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" type="submit">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  type="submit"
+                  className="input-styles btn-style"
+                >
                   Sign Up
                 </Button>
-                <Link to="/login">
+                <Link to="/login" className="sign-up">
                   <Form.Text className="text-center">
                     Already have an account? <a href="#login">Sign in</a>
                   </Form.Text>

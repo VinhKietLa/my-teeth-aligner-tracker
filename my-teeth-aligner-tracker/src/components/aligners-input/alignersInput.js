@@ -3,6 +3,7 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
+import "./alignersInput.css";
 
 function TreatmentForm() {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ function TreatmentForm() {
     let options = [];
     for (let i = 1; i <= 20; i++) {
       options.push(
-        <option key={i} value={i}>
+        <option className="option-style" key={i} value={i}>
           {i}
         </option>
       );
@@ -107,6 +108,7 @@ function TreatmentForm() {
               as="select"
               value={alignerWeeks[i] || ""}
               onChange={(e) => handleWeekChange(i, e.target.value)}
+              id="input-style"
             >
               {alignerOptions()}
             </Form.Control>
@@ -118,9 +120,9 @@ function TreatmentForm() {
   };
 
   return (
-    <Container className="vh-100">
+    <Container className="d-flex justify-content-center align-items-start vh-100 aligner-container">
       <Row className="justify-content-center align-items-center">
-        <Col md={6}>
+        <Col md={12}>
           <div className="text-center mb-4">
             <h2>Set Up Your Aligner Plan</h2>
           </div>
@@ -133,6 +135,7 @@ function TreatmentForm() {
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
+                  id="input-style"
                 />
               </Col>
             </Form.Group>
@@ -145,6 +148,7 @@ function TreatmentForm() {
                   as="select"
                   value={numberOfAligners}
                   onChange={handleAlignerChange}
+                  id="input-style"
                 >
                   {alignerOptions()}
                 </Form.Control>
@@ -153,12 +157,12 @@ function TreatmentForm() {
             {renderAlignerInputs()}
             <Row className="mt-4">
               <Col>
-                <Button variant="secondary" type="submit">
+                <Button type="submit" id="save-continue-btn">
                   Save and Continue Later
                 </Button>
               </Col>
               <Col>
-                <Button variant="primary" type="submit">
+                <Button type="submit" id="save-proceed-btn">
                   Save and Proceed
                 </Button>
               </Col>

@@ -25,20 +25,15 @@
     font-size: 2rem;
   }
 
-  div .btn-style {
-    background-color: #83c5dc;
-    border-color: #83c5dc;
-  }
-
   div .btn-style:hover {
     background-color: black;
     border-color: black;
   }
-  .sign-up {
+  .sign-in {
     font-size: 2rem;
     text-decoration: none;
   }
-  .sign-up a {
+  .sign-in a {
     font-weight: bold;
     color: #83c5dc;
   }

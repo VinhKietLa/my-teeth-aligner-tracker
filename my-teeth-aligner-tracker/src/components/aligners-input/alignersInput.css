@@ -1,0 +1,46 @@
+.aligner-container {
+  margin-top: 3rem;
+}
+
+div h2 {
+  font-size: 3rem;
+}
+
+.form-label {
+  font-size: 1.5rem;
+}
+
+.react-datepicker__month-container {
+  font-size: 1rem;
+}
+
+#input-style {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+#save-continue-btn {
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #454849;
+  border-color: #454849;
+}
+
+#save-continue-btn:hover {
+  background-color: #454849;
+  border-color: #454849;
+  font: bold;
+}
+
+#save-proceed-btn {
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #83c5dc;
+  border-color: #83c5dc;
+}
+
+#save-proceed-btn {
+  font: bold;
+  background-color: #83c5dc;
+  border-color: #83c5dc;
+}
