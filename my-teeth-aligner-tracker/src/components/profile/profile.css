@@ -1,0 +1,70 @@
+/* Sidebar styles */
+.sidebar {
+  background-color: #217380;
+}
+.sidebar ul {
+  list-style: none;
+  font-size: 1.25rem;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding-bottom: 1rem;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* Dashboard content styles */
+
+.dashboard-container {
+  display: flex;
+}
+
+.main-content {
+  margin-top: 1rem;
+}
+
+.main-content h1 {
+  font-size: 4rem;
+}
+
+.main-content span {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.main-content .save-changes-btn,
+.main-content .change-password-btn {
+  background-color: #83c5dc;
+  border-color: #83c5dc;
+}
+
+.main-content .save-changes-btn:hover,
+.main-content .change-password-btn:hover {
+  background-color: black;
+  border-color: black;
+}
+
+@media (min-width: 768px) {
+  .dashboard-container {
+    padding: 0 !important;
+    flex-wrap: nowrap;
+  }
+
+  .sidebar {
+    padding-top: 1rem;
+  }
+  .sidebar .dashboard-name {
+    font-size: 1.5rem;
+    padding-left: 2rem;
+    color: white;
+    font-weight: bold;
+  }
+  .main-content .treatment-info,
+  .main-content .aligner-calendar {
+    margin-left: 2rem;
+  }
+}

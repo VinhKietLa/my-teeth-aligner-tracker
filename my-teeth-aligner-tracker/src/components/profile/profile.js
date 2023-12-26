@@ -3,6 +3,10 @@ import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import Logout from "../log-out/log-out";
 import { Link } from "react-router-dom";
 import TreatmentUpdate from "../treatment-plan/treatment-update";
+import "./profile.css";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import logo from "../navbar/logo.png";
 
 function Profile() {
   const [userData, setUserData] = useState(null);
@@ -115,9 +119,30 @@ function Profile() {
   return (
     <>
       {" "}
+      <Navbar collapseOnSelect expand="lg" className="d-md-none nav-bg-custom">
+        <Navbar.Brand href="#home">
+          <img
+            src={logo}
+            width="30"
+            height="30"
+            className="d-inline-block align-top nav-logo"
+            alt="Logo"
+          />{" "}
+          SmileMinder
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#profile">Profile</Nav.Link>
+            <Nav.Link href="#dashboard">Dashboard</Nav.Link>
+            <Nav.Link href="#treatment-update">Treatment Plan</Nav.Link>
+            <Nav.Link href="#logout">{<Logout />}</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col md={3} className="sidebar">
+        <Col md={3} className="sidebar d-none d-md-block">
           <h2>{userData.username}</h2>
           <ul>
             <Link to="/profile">
@@ -137,7 +162,7 @@ function Profile() {
         <Col md={9} className="main-content">
           <Row>
             <h1>Your profile</h1>
-            <h2>Details</h2>
+            <span>Details</span>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3">
                 <Form.Label>Username</Form.Label>
@@ -161,7 +186,7 @@ function Profile() {
               </Form.Group>
 
               <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" type="submit">
+                <Button size="lg" type="submit" className="save-changes-btn">
                   Save changes{" "}
                 </Button>
               </div>
@@ -200,7 +225,7 @@ function Profile() {
                 />
               </Form.Group>
               <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" type="submit">
+                <Button size="lg" type="submit" className="change-password-btn">
                   Change password{" "}
                 </Button>
               </div>
