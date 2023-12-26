@@ -12,7 +12,7 @@ function HeroSection() {
         <div className="row">
           {" "}
           {/* Adjust height as needed */}
-          <div className="col-md-6 hero-title-and-btn">
+          <div className="col-md-12 hero-title-and-btn">
             <h1 className="hero-title text-black">
               Track your smile journey with ease
             </h1>
