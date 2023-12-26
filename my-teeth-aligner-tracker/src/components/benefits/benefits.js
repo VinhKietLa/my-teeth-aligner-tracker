@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import alignerImage from "./clear-aligner-benefits.png"; // Importing the hero image
-import reminderBenfits from "./reminder-benefits.png"; // Importing the hero image
-import dashboardBenefits from "./dashboard-benefits.png"; // Importing the hero image
+import alignerImage from "./clear-aligner-benefits.png";
+import reminderBenfits from "./reminder-benefits.png";
+import dashboardBenefits from "./dashboard-benefits.png";
+import "./benefits.css";
 
 function BenefitsSection() {
   return (
@@ -13,7 +14,12 @@ function BenefitsSection() {
         {/* Section 1 */}
         <Col md={4} sm={12} className="my-3">
           <h3>Track Your Aligners</h3>
-          <Image src={alignerImage} alt="Aligners Image" fluid />
+          <Image
+            src={alignerImage}
+            className="aligner-img"
+            alt="Clear aligners"
+            fluid
+          />
           <p>
             Stay in control of your smile journey. Our aligner tracker lets you
             effortlessly monitor progress, ensuring you're always on the path to
@@ -23,8 +29,13 @@ function BenefitsSection() {
 
         {/* Section 2 */}
         <Col md={4} sm={12} className="my-3">
-          <h3>Another Feature</h3>
-          <Image src={reminderBenfits} fluid />
+          <h3>Reminders</h3>
+          <Image
+            src={reminderBenfits}
+            className="reminders-img"
+            fluid
+            alt="Reminder Icon"
+          />
           <p>
             Never miss a beat with our web app notifications. Receive timely
             reminders for aligner changes, keeping your smile journey on track.
@@ -33,8 +44,13 @@ function BenefitsSection() {
 
         {/* Section 3 */}
         <Col md={4} sm={12} className="my-3">
-          <h3>Third Feature</h3>
-          <Image src={dashboardBenefits} alt="Third Feature Image" fluid />
+          <h3>Dashboard</h3>
+          <Image
+            src={dashboardBenefits}
+            className="benefits-img"
+            alt="Dashbaord"
+            fluid
+          />
           <p>
             Track your smile's transformation with our intuitive visual
             dashboard. Easily visualize your progress and witness the journey to

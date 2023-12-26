@@ -2,3 +2,9 @@
   background-color: #83c5dc;
   font-size: 1.5rem;
 }
+
+.aligner-img,
+.reminders-img,
+.benefits-img {
+  margin-bottom: 1rem;
+}
