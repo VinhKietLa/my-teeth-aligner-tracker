@@ -1,5 +1,8 @@
-import { Tabs, Tab, Accordion } from "react-bootstrap";
+import { Tabs, Tab, Accordion, Image } from "react-bootstrap";
 import "./help.css";
+import image1 from "./cleaning-aligners.png";
+import image2 from "./cleaning-aligners-1.png";
+import image3 from "./family-aligners.png";
 
 function HelpSection() {
   const FaqSection = () => {
@@ -127,6 +130,7 @@ function HelpSection() {
           </li>
           <li>Don't smoke or chew gum while wearing your aligners.</li>
         </ul>
+        <Image src={image3} fluid></Image>
       </>
     );
   };
@@ -171,6 +175,7 @@ function HelpSection() {
             and need a quick replacement.
           </li>
         </ul>
+        <Image src={image1} fluid></Image>
       </>
     );
   };
@@ -199,6 +204,8 @@ function HelpSection() {
           your aligners thoroughly before use with cold water and leave them to
           dry before putting them back on.
         </p>
+
+        <Image src={image2} fluid></Image>
       </>
     );
   };

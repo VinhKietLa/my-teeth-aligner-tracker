@@ -8,8 +8,8 @@ function About() {
   return (
     <>
       <Container className="mt-5 about-container">
-        <Row className="justify-content-center align-items-center about-row">
-          <Col md={6}>
+        <Row className="justify-content-center align-items-center">
+          <Col sm={12} md={6}>
             <h2>About SmileMinder</h2>
             <p>
               Welcome to SmileMinder, where we celebrate every step in the
