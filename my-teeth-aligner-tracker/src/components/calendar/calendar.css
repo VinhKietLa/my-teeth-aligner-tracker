@@ -27,3 +27,22 @@
   border: 1px solid black;
   height: 500px;
 }
+.calendar-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem; /* Adjust as needed */
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem; /* Space between legend items */
+}
+
+.legend-color {
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  border-radius: 50%; /* Circle shape */
+  margin-right: 0.5rem; /* Space between color and label */
+}

@@ -57,7 +57,6 @@ function Dashboard() {
   }, []);
 
   const treatmentStartDate = treatmentPlan?.start_date;
-  console.log(treatmentStartDate);
   const treatmentTimeRemaining =
     treatmentPlan && alignerInfo
       ? calculateTreatmentTimeRemaining(treatmentStartDate, alignerInfo)
@@ -72,6 +71,29 @@ function Dashboard() {
     : null;
 
   if (!userData || !treatmentPlan || !alignerInfo) return <div>Loading...</div>;
+
+  function CalendarLegend() {
+    return (
+      <div className="calendar-legend">
+        <div className="legend-item">
+          <span className="legend-color aligner-completed"></span>
+          <span className="legend-label">Completed Weeks</span>
+        </div>
+        <div className="legend-item">
+          <span className="legend-color aligner-current"></span>
+          <span className="legend-label">Current Week</span>
+        </div>
+        <div className="legend-item">
+          <span className="legend-color aligner-upcoming"></span>
+          <span className="legend-label">Upcoming Weeks</span>
+        </div>
+        <div className="legend-item">
+          <span className="legend-color aligner-next-switch"></span>
+          <span className="legend-label">Next Aligner Switch</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -157,6 +179,7 @@ function Dashboard() {
                 aligners={alignerInfo}
                 startDate={treatmentPlan.start_date}
               />
+              <CalendarLegend />
             </Col>
           </Row>
         </Col>
