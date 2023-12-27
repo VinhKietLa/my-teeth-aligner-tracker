@@ -18,6 +18,7 @@ import ConditionalNavbar from "./components/conditional-navbar/conditional-navba
 import Profile from "./components/profile/profile";
 import TreatmentUpdate from "./components/treatment-plan/treatment-update";
 import About from "./components/about/about";
+import HelpSection from "./components/help/help";
 
 const NavbarWrapper = () => {
   const location = useLocation();
@@ -44,10 +45,10 @@ function App() {
           }
         />
         <Route path="/about" element={<About />} />
-
+        <Route path="/help" element={<HelpSection />} />
+        <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/alignersetup" element={<AlignersInput />} />
-        <Route path="/login" element={<LoginForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/treatment-update" element={<TreatmentUpdate />} />

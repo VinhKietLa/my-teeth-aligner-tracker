@@ -36,9 +36,11 @@ function MyNavbar() {
                 About{" "}
               </Nav.Link>
             </Link>
-            <Nav.Link href="#help" className="text-white nav-link-custom">
-              Help
-            </Nav.Link>
+            <Link to="/help">
+              <Nav.Link href="#help" className="text-white nav-link-custom">
+                Help
+              </Nav.Link>
+            </Link>
             <Link to="/login">
               <Nav.Link href="#signin" className="text-white nav-link-custom">
                 Sign in
