@@ -27,15 +27,17 @@ function HelpSection() {
               hands, brush your teeth and floss before putting your aligners in.
             </li>
             <li>
-              Only pull out <strong>one</strong> set of aligners at a time.
-            </li>
-            <li>
               {" "}
               <strong>Use the aligner tool to take out your aligners. </strong>
               Pulling from your back teeth teeth, use one hook to pull your
               lower aligners up and off your teeth. For your upper aligners,
               pull down to remove. Nver pull outward, as it could damage your
               aligners.
+            </li>
+            <li>
+              <strong>Don't throw out your old aligners.</strong> Keep all your
+              previously worn aligners in a safe, sanitary place, just in case
+              you misplace one and need a quick replacement.
             </li>
             <li>
               {" "}
@@ -45,11 +47,8 @@ function HelpSection() {
             <li>
               Make sure to wear your aligners all day and night as prescribed.
             </li>
-            <li>
-              <strong>Don't throw out your old aligners.</strong> Keep all your
-              previously worn aligners in a safe, sanitary place, just in case
-              you misplace one and need a quick replacement.
-            </li>
+
+            <li>Only pull outone set of aligners at a time.</li>
           </ul>
           <Image src={image1} fluid></Image>
         </Container>
