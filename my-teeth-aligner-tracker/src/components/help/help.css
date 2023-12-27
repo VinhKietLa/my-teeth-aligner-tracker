@@ -1,0 +1,20 @@
+.help-tabs .nav-item button {
+  color: #565756;
+}
+
+.general-section h3,
+.general-section p,
+.cleaning-section h3,
+.cleaning-section p,
+.do-dont-section h3 {
+  margin-bottom: 1.5rem;
+}
+
+.general-section ul li,
+.do-dont-section ul li {
+  margin-bottom: 1rem;
+}
+
+.faq-section .accordion-button:not(.collapsed) .accordion-body {
+  background-color: #83c5dc;
+}
