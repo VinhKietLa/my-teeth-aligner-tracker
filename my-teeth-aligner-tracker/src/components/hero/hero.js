@@ -1,8 +1,6 @@
 import React from "react";
 import { Button, Container } from "react-bootstrap";
-import heroImage from "./hero.png"; // Importing the hero image
 import "./hero.css";
-import heroImageMobile from "./hero_mobile.png"; // Mobile image
 import { Link } from "react-router-dom";
 
 function HeroSection() {

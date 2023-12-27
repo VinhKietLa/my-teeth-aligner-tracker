@@ -30,9 +30,12 @@ function MyNavbar() {
           <Nav className="ms-auto">
             {" "}
             {/* ms-auto pushes it to the right */}
-            <Nav.Link href="#about" className="text-white nav-link-custom">
-              About
-            </Nav.Link>
+            <Link to="/about">
+              {" "}
+              <Nav.Link href="#signin" className="text-white nav-link-custom">
+                About{" "}
+              </Nav.Link>
+            </Link>
             <Nav.Link href="#help" className="text-white nav-link-custom">
               Help
             </Nav.Link>

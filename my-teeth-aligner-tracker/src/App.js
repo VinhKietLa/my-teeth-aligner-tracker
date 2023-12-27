@@ -17,6 +17,7 @@ import Dashboard from "./components/dashboard/dashboard";
 import ConditionalNavbar from "./components/conditional-navbar/conditional-navbar";
 import Profile from "./components/profile/profile";
 import TreatmentUpdate from "./components/treatment-plan/treatment-update";
+import About from "./components/about/about";
 
 const NavbarWrapper = () => {
   const location = useLocation();
@@ -42,6 +43,8 @@ function App() {
             </>
           }
         />
+        <Route path="/about" element={<About />} />
+
         <Route path="/signup" element={<SignUp />} />
         <Route path="/alignersetup" element={<AlignersInput />} />
         <Route path="/login" element={<LoginForm />} />
