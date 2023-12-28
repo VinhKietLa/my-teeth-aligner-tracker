@@ -1,27 +1,17 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import alignerImage from "./clear-aligner-benefits.png";
 import reminderBenfits from "./reminder-benefits.png";
 import dashboardBenefits from "./dashboard-benefits.png";
 import "./benefits.css";
+import useIsMobile from "../is-mobile/is-mobile";
 
 function BenefitsSection() {
-  const [isFluid, setIsFluid] = useState(window.innerWidth <= 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsFluid(window.innerWidth <= 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
-    <Container fluid={isFluid} className="text-center my-5 benefit-container">
+    <Container
+      fluid={useIsMobile}
+      className="text-center my-5 benefit-container"
+    >
       <h2 className="benefits-title">Why Choose Our Aligner Tracker</h2>
 
       <Row className="benefit-sections">

@@ -1,16 +1,16 @@
-import React from "react";
-import { Container, Button, Col, Image, Row } from "react-bootstrap";
+import { React } from "react";
+import { Container, Col, Image, Row } from "react-bootstrap";
 import "./about.css";
-import { Link } from "react-router-dom";
 import sdc from "./sdc.png"; //
+import useIsMobile from "../is-mobile/is-mobile";
 
 function About() {
   return (
     <>
-      <Container className="mt-5 about-container">
+      <Container fluid={useIsMobile} className="mt-5 about-container">
         <Row className="justify-content-center align-items-center">
           <Col sm={12} md={6}>
-            <h2>About SmileMinder</h2>
+            <h1 className="about-title">About SmileMinder</h1>
             <p>
               Welcome to SmileMinder, where we celebrate every step in the
               journey towards a perfect smile.
@@ -49,8 +49,10 @@ function About() {
               community and let's celebrate each step towards a confident smile
               together.
             </p>
+            <br></br>
 
-            <Image src={sdc} fluid></Image>
+            <h4>Rest in piece SDC 🪦</h4>
+            <Image src={sdc} fluid alt="Smile direct club website"></Image>
           </Col>
         </Row>
       </Container>
