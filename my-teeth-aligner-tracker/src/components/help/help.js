@@ -3,6 +3,7 @@ import "./help.css";
 import image1 from "./cleaning-aligners.png";
 import image2 from "./cleaning-aligners-1.png";
 import image3 from "./family-aligners.png";
+import useIsMobile from "../is-mobile/is-mobile";
 
 function HelpSection() {
   const GeneralHelp = () => {
@@ -154,6 +155,7 @@ function HelpSection() {
   const FaqSection = () => {
     return (
       <Container className="faq-section">
+        <h3>Frequently asked questions</h3>
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="0">
             <Accordion.Header>What's with the lisp?</Accordion.Header>
@@ -215,8 +217,9 @@ function HelpSection() {
               I have a question that isn't listed?
             </Accordion.Header>
             <Accordion.Body>
-              Feel free to send an email to kietla@live.co.uk and I'll help the
-              best I can.
+              Feel free to send an email to{" "}
+              <a href="mailto:kietla@live.co.uk">kietla@live.co.uk</a> and I'll
+              help the best I can.
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
@@ -224,7 +227,7 @@ function HelpSection() {
     );
   };
   return (
-    <Container className="help-main-content">
+    <Container fluid={useIsMobile} className="help-main-content">
       <Tabs
         defaultActiveKey="generalHelp"
         id="uncontrolled-tab-example"

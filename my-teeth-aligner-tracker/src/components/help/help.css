@@ -22,3 +22,10 @@
 .help-main-content {
   min-height: 100vh;
 }
+
+.general-section h3,
+.cleaning-section h3,
+.do-dont-section h3,
+.faq-section h3 {
+  font-weight: bold;
+}
