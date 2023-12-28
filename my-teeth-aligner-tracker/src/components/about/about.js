@@ -5,9 +5,11 @@ import sdc from "./sdc.png"; //
 import useIsMobile from "../is-mobile/is-mobile";
 
 function About() {
+  const isMobile = useIsMobile();
+
   return (
     <>
-      <Container fluid={useIsMobile} className="mt-5 about-container">
+      <Container fluid={isMobile} className="mt-5 about-container">
         <Row className="justify-content-center align-items-center">
           <Col sm={12} md={6}>
             <h1 className="about-title">About SmileMinder</h1>

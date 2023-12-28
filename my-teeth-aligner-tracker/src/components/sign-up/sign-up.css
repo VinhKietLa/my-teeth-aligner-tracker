@@ -17,13 +17,14 @@ div .input-styles-sign-up {
 }
 
 div .btn-style-sign-up {
-  background-color: #83c5dc;
-  border-color: #83c5dc;
+  background-color: #4f838b;
+  border-color: #4f838b;
 }
 
-div .btn-style-sign-up:hover {
-  background-color: black;
-  border-color: black;
+div .btn-style-sign-up:hover,
+div .gap-2 .btn-style-sign-up:active {
+  background-color: #4f838b;
+  border-color: #4f838b;
 }
 .sign-up {
   font-size: 2rem;

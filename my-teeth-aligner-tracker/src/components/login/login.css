@@ -17,13 +17,14 @@ div .input-styles {
 }
 
 div .btn-style {
-  background-color: #83c5dc;
-  border-color: #83c5dc;
+  background-color: #4f838b;
+  border-color: #4f838b;
 }
 
-div .btn-style:hover {
-  background-color: black;
-  border-color: black;
+div .btn-style:hover,
+div .gap-2 .btn-style:active {
+  background-color: #4f838b;
+  border-color: #4f838b;
 }
 .sign-in {
   font-size: 2rem;

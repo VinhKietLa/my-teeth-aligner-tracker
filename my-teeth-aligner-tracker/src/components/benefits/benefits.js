@@ -7,11 +7,9 @@ import "./benefits.css";
 import useIsMobile from "../is-mobile/is-mobile";
 
 function BenefitsSection() {
+  const isMobile = useIsMobile();
   return (
-    <Container
-      fluid={useIsMobile}
-      className="text-center my-5 benefit-container"
-    >
+    <Container fluid={isMobile} className="text-center my-5">
       <h2 className="benefits-title">Why Choose Our Aligner Tracker</h2>
 
       <Row className="benefit-sections">

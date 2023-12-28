@@ -6,6 +6,8 @@ import image3 from "./family-aligners.png";
 import useIsMobile from "../is-mobile/is-mobile";
 
 function HelpSection() {
+  const isMobile = useIsMobile();
+
   const GeneralHelp = () => {
     return (
       <>
@@ -227,7 +229,7 @@ function HelpSection() {
     );
   };
   return (
-    <Container fluid={useIsMobile} className="help-main-content">
+    <Container fluid={isMobile} className="help-main-content">
       <Tabs
         defaultActiveKey="generalHelp"
         id="uncontrolled-tab-example"
