@@ -1,7 +1,11 @@
 div .sidebar-logout {
-  background-color: #83c5dc;
+  background-color: #4f838b;
+  border-color: #4f838b;
 }
-div .sidebar-logout:hover {
-  background-color: #83c5dc;
+div .sidebar-logout:hover,
+div .sidebar-logout:active {
+  background-color: #4f838b !important;
   font-weight: bold;
+  border-radius: 50px;
+  border-color: #4f838b !important;
 }

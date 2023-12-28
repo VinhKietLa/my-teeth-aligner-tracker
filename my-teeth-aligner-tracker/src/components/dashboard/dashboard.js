@@ -121,7 +121,7 @@ function Dashboard() {
       </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col md={3} className="sidebar d-none d-md-block">
+        <Col md={3} lg={2} className="sidebar d-none d-md-block">
           <h2 className="dashboard-name">{userData.username}</h2>
           <ul>
             <Link to="/profile">
@@ -136,13 +136,13 @@ function Dashboard() {
         </Col>
 
         {/* Main Content */}
-        <Col sm={12} lg={8} className="main-content">
+        <Col lg={6} className="main-content">
           {/* Treatment Information */}
           <Row className="treatment-info">
             <h1>Your Smile Journey</h1>
             <span>Track your progress</span>
             {/* Treatment Time Remaining */}
-            <Col sm={12} lg={4}>
+            <Col>
               <Card className="treatment-remaining-card">
                 <Card.Body>
                   <Card.Title>Treatment Time Remaining</Card.Title>
@@ -152,7 +152,7 @@ function Dashboard() {
             </Col>
 
             {/* Next Aligner Switch */}
-            <Col sm={12} lg={4}>
+            <Col>
               <Card className="next-aligner-card">
                 <Card.Body>
                   <Card.Title>Next Aligner Switch</Card.Title>
@@ -162,7 +162,7 @@ function Dashboard() {
             </Col>
 
             {/* New Smile ETA */}
-            <Col sm={12} lg={4}>
+            <Col>
               <Card className="smile-eta-card">
                 <Card.Body>
                   <Card.Title>New Smile ETA</Card.Title>
@@ -174,7 +174,7 @@ function Dashboard() {
 
           {/* Calendar */}
           <Row className="aligner-calendar">
-            <Col sm={12} lg={12}>
+            <Col>
               <AlignerCalendar
                 aligners={alignerInfo}
                 startDate={treatmentPlan.start_date}

@@ -65,7 +65,16 @@
   }
   .treatment-container {
     margin-left: 2rem;
-    max-width: 500px;
+    max-width: 650px;
     margin-bottom: 2rem;
+  }
+
+  .treatment-container .row span {
+    margin-bottom: 2rem;
+  }
+
+  .treatment-container .treatment-plan-titles {
+    font-size: 1rem;
+    font-weight: bold;
   }
 }

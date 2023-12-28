@@ -38,14 +38,16 @@
 
 .main-content .save-changes-btn,
 .main-content .change-password-btn {
-  background-color: #83c5dc;
-  border-color: #83c5dc;
+  background-color: #4f838b;
+  border-color: #4f838b;
 }
 
 .main-content .save-changes-btn:hover,
-.main-content .change-password-btn:hover {
-  background-color: black;
-  border-color: black;
+.main-content .change-password-btn:hover,
+html .main-content .save-changes-btn:active,
+html .main-content .change-password-btn:active {
+  background-color: #4f838b;
+  border-color: #4f838b;
 }
 
 @media (min-width: 768px) {

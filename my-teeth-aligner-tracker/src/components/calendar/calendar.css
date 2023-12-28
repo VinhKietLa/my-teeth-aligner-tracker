@@ -6,19 +6,19 @@
 }
 
 .aligner-completed {
-  background-color: #90ee90; /* Light green for completed weeks */
+  background-color: #90ee90;
 }
 
 .aligner-current {
-  background-color: orange; /* Orange for the current week */
+  background-color: orange;
 }
 
 .aligner-upcoming {
-  background-color: red; /* Red for upcoming weeks */
+  background-color: red;
 }
 
 .aligner-next-switch {
-  background-color: blue; /* Blue for the next aligner date change */
+  background-color: blue;
 }
 
 .react-calendar {
@@ -26,23 +26,27 @@
   width: 100%;
   border: 1px solid black;
   height: 500px;
+  background-color: #fcfcfc;
 }
 .calendar-legend {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem; /* Adjust as needed */
+  margin-top: 1rem;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  margin-right: 1rem; /* Space between legend items */
+  margin-right: 1rem;
 }
 
 .legend-color {
-  width: 20px; /* Adjust size as needed */
-  height: 20px; /* Adjust size as needed */
-  border-radius: 50%; /* Circle shape */
-  margin-right: 0.5rem; /* Space between color and label */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .calendar-legend {
+    margin-top: 2rem;
+  }
 }

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import Logout from "../log-out/log-out";
 import { Link } from "react-router-dom";
-import TreatmentUpdate from "../treatment-plan/treatment-update";
 import "./profile.css";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -142,7 +141,7 @@ function Profile() {
       </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col lg={2} className="sidebar d-none d-md-block">
+        <Col md={3} lg={2} className="sidebar d-none d-md-block">
           <h2 className="dashboard-name">{userData.username}</h2>
           <ul>
             <li>Profile</li>

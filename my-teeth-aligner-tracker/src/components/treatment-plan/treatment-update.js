@@ -227,7 +227,7 @@ function TreatmentUpdate() {
       </Navbar>
       <Container fluid className="dashboard-container">
         {/* Sidebar */}
-        <Col md={3} className="sidebar d-none d-md-block">
+        <Col md={3} lg={2} className="sidebar d-none d-md-block">
           <h2 className="dashboard-name">{userData.username}</h2>
           <ul>
             <Link to="/profile">
@@ -242,13 +242,13 @@ function TreatmentUpdate() {
         </Col>
 
         {/* Main Content */}
-        <Col md={9} className="main-content treatment-container">
+        <Col lg={12} className="main-content treatment-container">
           <Row>
             <h1>Your treatment plan</h1>
-            <h2>Edit your plan</h2>
+            <span>Edit your plan</span>
             <Form onSubmit={handleSubmit}>
               <Form.Group as={Row} className="mb-3">
-                <Form.Label column sm={3}>
+                <Form.Label className="treatment-plan-titles" column sm={3}>
                   Treatment Start Date:
                 </Form.Label>
                 <Col sm={9}>
@@ -260,7 +260,9 @@ function TreatmentUpdate() {
                 </Col>
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Label>Number of Aligners</Form.Label>
+                <Form.Label className="treatment-plan-titles">
+                  Number of Aligners
+                </Form.Label>
 
                 <Form.Control
                   as="select"

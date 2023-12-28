@@ -58,6 +58,10 @@ nav.nav-bg-custom {
   font-size: 2rem;
 }
 
+.calendar-legend {
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .dashboard-container {
     padding: 0 !important;
