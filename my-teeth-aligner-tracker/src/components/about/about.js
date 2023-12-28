@@ -51,7 +51,7 @@ function About() {
             </p>
             <br></br>
 
-            <h4>Rest in piece SDC 🪦</h4>
+            <h4>Rest in peece SDC 🪦</h4>
             <Image src={sdc} fluid alt="Smile direct club website"></Image>
           </Col>
         </Row>
