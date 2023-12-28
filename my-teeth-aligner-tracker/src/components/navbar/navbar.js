@@ -11,7 +11,7 @@ function MyNavbar() {
   return (
     <Navbar expand="md" className="nav-bg-custom">
       <Container>
-        <Navbar.Brand href="#home nav-title">
+        <Navbar.Brand href="/">
           <img
             src={logo}
             width="30"

@@ -224,7 +224,7 @@ function HelpSection() {
     );
   };
   return (
-    <Container>
+    <Container className="help-main-content">
       <Tabs
         defaultActiveKey="generalHelp"
         id="uncontrolled-tab-example"

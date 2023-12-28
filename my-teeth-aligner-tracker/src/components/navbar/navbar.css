@@ -2,25 +2,30 @@
   background-color: #217380;
 }
 
+.ms-auto a {
+  text-decoration: none;
+  font-weight: bold;
+}
 .nav-logo {
   margin-right: 1rem;
 }
 
 .navbar .nav-link.nav-link-custom {
   margin-right: 1rem;
-  font-weight: bold;
 }
 
 .navbar .get-started-btn {
-  background-color: #83c5dc;
-  border-color: #83c5dc;
+  background-color: #4f838b;
+  border-color: #4f838b;
 }
 
-.navbar .get-started-btn:hover {
-  background-color: black;
-  border-color: black;
+.navbar .get-started-btn:hover,
+html .navbar .get-started-btn:hover:active {
+  background-color: #4f838b;
+  border-color: #4f838b;
+  border-radius: 50px;
 }
 
-.nav-smile-minder {
-  text-decoration: none !important;
+.nav-bg-custom .container .navbar-brand .nav-smile-minder {
+  text-decoration: none;
 }

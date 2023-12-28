@@ -30,30 +30,37 @@ const NavbarWrapper = () => {
 };
 function App() {
   return (
-    <Router>
-      {<NavbarWrapper />}
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <HeroSection />
-              <BenefitsSection />
-              <ContactUs />
-              <Footer />
-            </>
-          }
-        />
-        <Route path="/about" element={<About />} />
-        <Route path="/help" element={<HelpSection />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/alignersetup" element={<AlignersInput />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/treatment-update" element={<TreatmentUpdate />} />
-      </Routes>
-    </Router>
+    <>
+      <div className="page-container">
+        <div className="content-wrap">
+          <Router>
+            {<NavbarWrapper />}
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <HeroSection />
+                    <BenefitsSection />
+                    <ContactUs />
+                  </>
+                }
+              />
+              <Route path="/about" element={<About />} />
+              <Route path="/help" element={<HelpSection />} />
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/alignersetup" element={<AlignersInput />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/treatment-update" element={<TreatmentUpdate />} />
+            </Routes>
+          </Router>
+        </div>
+
+        <Footer />
+      </div>
+    </>
   );
 }
 

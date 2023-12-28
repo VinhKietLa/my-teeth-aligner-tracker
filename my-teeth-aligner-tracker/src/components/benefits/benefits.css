@@ -1,7 +1,20 @@
+.benefits-title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+body .benefit-sections {
+  margin-top: 3rem;
+}
+
+.benefit-sections p {
+  text-align: center;
+}
+
 .aligner-img,
 .reminders-img,
 .benefits-img {
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 @media (min-width: 768px) {
@@ -13,6 +26,6 @@
   }
 
   .benefit-sections p {
-    font-size: 1rem;
+    text-align: left;
   }
 }

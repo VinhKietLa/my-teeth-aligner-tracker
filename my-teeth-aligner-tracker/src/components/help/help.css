@@ -18,3 +18,7 @@
 .faq-section .accordion-button:not(.collapsed) .accordion-body {
   background-color: #83c5dc;
 }
+
+.help-main-content {
+  min-height: 100vh;
+}

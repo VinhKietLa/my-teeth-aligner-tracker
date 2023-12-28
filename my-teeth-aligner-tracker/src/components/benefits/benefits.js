@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import alignerImage from "./clear-aligner-benefits.png";
 import reminderBenfits from "./reminder-benefits.png";
@@ -6,11 +6,25 @@ import dashboardBenefits from "./dashboard-benefits.png";
 import "./benefits.css";
 
 function BenefitsSection() {
+  const [isFluid, setIsFluid] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsFluid(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <Container className="text-center my-5">
+    <Container fluid={isFluid} className="text-center my-5 benefit-container">
       <h2 className="benefits-title">Why Choose Our Aligner Tracker</h2>
 
-      <Row className="my-4 benefit-sections">
+      <Row className="benefit-sections">
         {/* Section 1 */}
         <Col md={4} className="my-3">
           <h3>Track Your Aligners</h3>

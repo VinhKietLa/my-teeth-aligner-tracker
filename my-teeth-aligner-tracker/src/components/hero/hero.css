@@ -22,14 +22,18 @@
 }
 
 .hero-section .get-started-btn {
-  background-color: #83c5dc;
+  background-color: #4f838b;
   font-size: 1.5rem;
-  border-color: #83c5dc;
+  border-color: #4f838b;
+  font-weight: bold;
+  margin-top: 400px;
 }
 
-.hero-section .get-started-btn:hover {
-  background-color: black;
-  border-color: black;
+.hero-section .get-started-btn:hover,
+html .hero-section .get-started-btn:active {
+  background-color: #4f838b;
+  border-color: #4f838b;
+  border-radius: 50px;
 }
 
 .hero-section .hero-title-and-btn {
@@ -54,9 +58,13 @@
 
   .hero-title {
     font-size: 2.5rem;
+    width: 50%;
   }
 
   .hero-section .hero-title-and-btn {
     margin-bottom: 15rem;
+  }
+  .hero-section .get-started-btn {
+    margin-top: 0px;
   }
 }

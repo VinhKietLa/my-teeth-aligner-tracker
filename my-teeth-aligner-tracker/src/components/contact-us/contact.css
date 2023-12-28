@@ -1,21 +1,25 @@
 .form-section .contact-us-btn {
-  background-color: #83c5dc;
+  background-color: #4f838b;
   font-size: 1.5rem;
 }
 
 .form-section .contact-us-btn {
-  background-color: #83c5dc;
+  background-color: #4f838b;
   font-size: 1.5rem;
-  border-color: #83c5dc;
+  border-color: #4f838b;
 }
 
 .container .contact-us-title {
   text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-.container .contact-us-btn:hover {
-  background-color: black;
-  border-color: black;
+.container .contact-us-btn:hover,
+html .container .contact-us-btn:active {
+  background-color: #4f838b;
+  border-color: #4f838b;
+  border-radius: 50px;
 }
 
 @media (min-width: 769px) {
