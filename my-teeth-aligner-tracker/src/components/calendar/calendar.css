@@ -20,12 +20,14 @@
 .aligner-next-switch {
   background-color: blue;
 }
+.aligner-current-day {
+  background-color: rgb(255, 255, 118);
+}
 
 .react-calendar {
   margin-top: 5rem;
   width: 100%;
-  border: 1px solid black;
-  height: 500px;
+  height: 550px;
   background-color: #fcfcfc;
 }
 .calendar-legend {

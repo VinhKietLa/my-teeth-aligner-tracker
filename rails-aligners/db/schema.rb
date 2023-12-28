@@ -11,9 +11,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_12_20_145733) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "aligners", force: :cascade do |t|
     t.integer "duration_weeks"
-    t.integer "treatment_plan_id", null: false
+    t.bigint "treatment_plan_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["treatment_plan_id"], name: "index_aligners_on_treatment_plan_id"
@@ -23,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_145733) do
     t.date "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_treatment_plans_on_user_id"
   end
 

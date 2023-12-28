@@ -70,7 +70,7 @@ function TreatmentUpdate() {
           className="mb-3"
           controlId={`aligner-${i}`}
         >
-          <Form.Label column sm={6}>
+          <Form.Label column sm={6} className="treatment-plan-titles">
             Aligner {i} Duration (weeks):
           </Form.Label>
           <Col sm={6}>

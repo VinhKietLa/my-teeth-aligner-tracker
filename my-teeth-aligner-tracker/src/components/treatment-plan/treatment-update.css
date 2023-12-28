@@ -28,12 +28,17 @@
 }
 
 .main-content h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 .main-content span {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+
+.treatment-container .treatment-plan-titles {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .main-content .save-changes-btn,
@@ -73,8 +78,7 @@
     margin-bottom: 2rem;
   }
 
-  .treatment-container .treatment-plan-titles {
-    font-size: 1rem;
-    font-weight: bold;
+  .treatment-container h1 {
+    font-size: 3rem;
   }
 }

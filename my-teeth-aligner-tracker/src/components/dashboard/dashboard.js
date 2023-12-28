@@ -91,6 +91,10 @@ function Dashboard() {
           <span className="legend-color aligner-next-switch"></span>
           <span className="legend-label">Next Aligner Switch</span>
         </div>
+        <div className="legend-item">
+          <span className="legend-color aligner-current-day"></span>
+          <span className="legend-label">Current Day</span>
+        </div>
       </div>
     );
   }
