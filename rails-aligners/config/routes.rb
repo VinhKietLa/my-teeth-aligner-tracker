@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get '/csrf', to: 'csrf#index'
 
   namespace :api do
     post '/signup', to: 'users#create'
@@ -10,5 +9,7 @@ Rails.application.routes.draw do
     post '/login', to: 'authentication#login'
     resources :treatment_plans, only: [:create, :show, :update, :destroy, :index]
     resources :aligners, only: [:show, :index]
+    get '/csrf', to: 'csrf#index'
+
   end
 end

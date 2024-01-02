@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import peopleImages from "./aligners.png";
 
-async function fetchCsrfToken() {
-  const response = await fetch("https://smileminder.onrender.com/csrf", {
+async function fetchCsrfToken() 
+  const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/csrf`, {
     credentials: "include",
   });
   const data = await response.json();
@@ -32,8 +32,7 @@ function SignUp() {
     };
 
     // Send data to backend
-    const response = await fetch(
-      "https://smileminder.onrender.com/api/signup",
+    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/signup`,
       {
         method: "POST",
         headers: {
