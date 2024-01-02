@@ -19,7 +19,7 @@ test:
 
 production:
   <<: *default
-  database: your_app_production
+  database: <%= ENV['PRODUCTION_DB_NAME'] %> # Add this
   username: <%= ENV['PRODUCTION_DB_USERNAME'] %>
   password: <%= ENV['PRODUCTION_DB_PASSWORD'] %>
   host: <%= ENV['PRODUCTION_DB_HOST'] %>
