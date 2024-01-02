@@ -24,9 +24,12 @@ function Profile() {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         };
-        const userResponse = await fetch("http://localhost:3000/api/user", {
-          headers,
-        });
+        const userResponse = await fetch(
+          "https://smileminder.onrender.com/api/user",
+          {
+            headers,
+          }
+        );
         const userData = await userResponse.json();
         if (userData) {
           setUserData(userData);
@@ -58,11 +61,14 @@ function Profile() {
     });
 
     try {
-      const userResponse = await fetch("http://localhost:3000/api/user", {
-        method: "PATCH",
-        headers: headers,
-        body: body,
-      });
+      const userResponse = await fetch(
+        "https://smileminder.onrender.com/api/user",
+        {
+          method: "PATCH",
+          headers: headers,
+          body: body,
+        }
+      );
       const updatedUserData = await userResponse.json();
       if (!userResponse.ok) {
         throw new Error(`Error: ${userResponse.status}`);
@@ -93,7 +99,7 @@ function Profile() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/user/changepassword",
+        "https://smileminder.onrender.com/api/user/changepassword",
         {
           method: "PATCH",
           headers: headers,

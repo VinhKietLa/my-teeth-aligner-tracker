@@ -71,14 +71,17 @@ function TreatmentForm() {
       ),
     };
 
-    const response = await fetch("http://localhost:3000/api/treatment_plans", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ treatment_plan: treatmentData }),
-    });
+    const response = await fetch(
+      "https://smileminder.onrender.com/api/treatment_plans",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ treatment_plan: treatmentData }),
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import peopleImages from "./aligners.png";
 
 async function fetchCsrfToken() {
-  const response = await fetch("http://localhost:3000/csrf", {
+  const response = await fetch("https://smileminder.onrender.com/csrf", {
     credentials: "include",
   });
   const data = await response.json();
@@ -32,14 +32,17 @@ function SignUp() {
     };
 
     // Send data to backend
-    const response = await fetch("http://localhost:3000/api/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": csrfToken,
-      },
-      body: JSON.stringify(formData),
-    });
+    const response = await fetch(
+      "https://smileminder.onrender.com/api/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": csrfToken,
+        },
+        body: JSON.stringify(formData),
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();
