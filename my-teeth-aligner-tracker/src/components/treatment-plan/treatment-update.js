@@ -185,7 +185,7 @@ function TreatmentUpdate() {
     try {
       console.log(treatmentPlanId);
       const userResponse = await fetch(
-        `http://localhost:3000/api/treatment_plans/${treatmentPlanId}`,
+        `https://smileminder.onrender.com/api/treatment_plans/${treatmentPlanId}`,
         {
           method: "PATCH",
           headers: headers,
