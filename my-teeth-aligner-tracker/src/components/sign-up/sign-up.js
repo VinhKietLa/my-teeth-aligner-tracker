@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import peopleImages from "./aligners.png";
 
 async function fetchCsrfToken() {
-  const response = await fetch("https://smileminder.onrender.com/api/csrf", {
+  const response = await fetch("https://smileminder.onrender.com/csrf", {
     credentials: "include",
   });
   const data = await response.json();
