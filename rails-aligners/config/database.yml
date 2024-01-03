@@ -2,16 +2,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: your_username
-  password: your_password
-  host: localhost
+  username: <%= ENV['DB_USERNAME'] || 'default_username' %>
+  password: <%= ENV['DB_PASSWORD'] || 'default_password' %>
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
 
 development:
   <<: *default
-  database: smileminder_development
-  username: your_username
-  password: your_password
-  host: localhost
+  database: your_app_development
 
 test:
   <<: *default
@@ -19,7 +16,7 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV['PRODUCTION_DB_NAME'] %> # Add this
+  database: <%= ENV['PRODUCTION_DB_NAME'] %>
   username: <%= ENV['PRODUCTION_DB_USERNAME'] %>
   password: <%= ENV['PRODUCTION_DB_PASSWORD'] %>
   host: <%= ENV['PRODUCTION_DB_HOST'] %>
