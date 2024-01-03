@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       private
 
   def decode_token(token)
-    JWT.decode(token, Rails.application.secrets.secret_key_base, true, { algorithm: 'HS256' })
+    JWT.decode(token, ENV['SECRET_KEY_BASE'], true, { algorithm: 'HS256' })
   rescue JWT::DecodeError
     nil
   end
