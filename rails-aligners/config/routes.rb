@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  # Temporary route for running migrations
+get '/run_migrations', to: 'application#run_migrations' if Rails.env.production?
+
   get '/csrf', to: 'csrf#index'
 
   namespace :api do

@@ -1,5 +1,14 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :null_session or protect_from_forgery with: :exception
+
+    def run_migrations
+      if params[:token] == 'your_secret_token'
+        ActiveRecord::Migrator.migrate(Rails.root.join('db/migrate'))
+        render plain: 'Migrations run successfully'
+      else
+        head :unauthorized
+      end
+    end
     def authenticate_user
         header = request.headers['Authorization']
         header = header.split(' ').last if header
