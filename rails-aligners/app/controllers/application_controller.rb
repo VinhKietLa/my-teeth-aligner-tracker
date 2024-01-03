@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
           @decoded = JWT.decode(header, Rails.application.secrets.secret_key_base, true, algorithm: 'HS256')
           @current_user = User.find(@decoded[0]['user_id'])
         rescue ActiveRecord::RecordNotFound => e
+          Rails.logger.info "User not found: #{e.message}"
           render json: { errors: e.message }, status: :unauthorized
         rescue JWT::DecodeError => e
+          Rails.logger.info "JWT Decode Error: #{e.message}"
           render json: { errors: e.message }, status: :unauthorized
         end
       end
