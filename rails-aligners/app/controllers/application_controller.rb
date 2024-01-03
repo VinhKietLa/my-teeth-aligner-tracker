@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
         header = request.headers['Authorization']
         header = header.split(' ').last if header
         begin
-          @decoded = JWT.decode(header, Rails.application.secrets.secret_key_base, true, algorithm: 'HS256')
+          @decoded = JWT.decode(header, Rails.application.credentials.secret_key_base, true, algorithm: 'HS256')
           @current_user = User.find(@decoded[0]['user_id'])
         rescue ActiveRecord::RecordNotFound => e
           Rails.logger.info "User not found: #{e.message}"
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
       private
 
   def decode_token(token)
-    JWT.decode(token, ENV['SECRET_KEY_BASE'], true, { algorithm: 'HS256' })
+    JWT.decode(token, Rails.application.credentials.secret_key_base, true, { algorithm: 'HS256' })
   rescue JWT::DecodeError
     nil
   end

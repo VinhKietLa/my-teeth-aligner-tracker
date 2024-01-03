@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     def generate_jwt_token(user)
       payload = { user_id: user.id }
       # Adjust the below line according to your JWT secret and algorithm
-      JWT.encode(payload, Rails.application.secrets.secret_key_base, 'HS256')
+      JWT.encode(payload, Rails.application.credentials.secret_key_base, 'HS256')
     end
   end
 end
