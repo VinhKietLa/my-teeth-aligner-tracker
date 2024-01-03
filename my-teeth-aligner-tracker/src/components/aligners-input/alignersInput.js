@@ -86,6 +86,7 @@ function TreatmentForm() {
     if (response.ok) {
       const data = await response.json();
       localStorage.getItem("token"); // Get the token
+      console.log(data);
       navigate("/dashboard");
     } else {
       const errorData = await response.json();
