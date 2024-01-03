@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
     def run_migrations
       if params[:token] == '250694lucky'
-        ActiveRecord::Migrator.migrate(Rails.root.join('db/migrate'))
+        ActiveRecord::MigrationContext.new(Rails.root.join('db/migrate')).migrate
         render plain: 'Migrations run successfully'
       else
         head :unauthorized
