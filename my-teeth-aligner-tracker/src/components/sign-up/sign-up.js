@@ -15,6 +15,8 @@ async function fetchCsrfToken() {
 }
 
 function SignUp() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -22,40 +24,48 @@ function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const csrfToken = await fetchCsrfToken();
-    const formData = {
-      user: {
-        email: email,
-        username: username,
-        password: password,
-      },
-    };
-
-    // Send data to backend
-    const response = await fetch(
-      "https://smileminder.onrender.com/api/signup",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": csrfToken,
+    setIsLoading(true);
+    try {
+      const csrfToken = await fetchCsrfToken();
+      const formData = {
+        user: {
+          email: email,
+          username: username,
+          password: password,
         },
-        body: JSON.stringify(formData),
+      };
+
+      // Send data to backend
+      const response = await fetch(
+        "https://smileminder.onrender.com/api/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("token", data.token); // Store the token
+        navigate("/alignersetup");
+        const token = localStorage.getItem("token"); // Retrieve token from local storage
+
+        console.log("JWT Token:", token);
+      } else {
+        const errorData = await response.json();
+        console.log("Error signing up:", errorData);
       }
-    );
-
-    if (response.ok) {
-      const data = await response.json();
-      localStorage.setItem("token", data.token); // Store the token
-      navigate("/alignersetup");
-      const token = localStorage.getItem("token"); // Retrieve token from local storage
-
-      console.log("JWT Token:", token);
-    } else {
-      const errorData = await response.json();
-      console.log("Error signing up:", errorData);
+    } catch (error) {
+      console.error("Login error:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
+
   return (
     <Container className="d-flex flex-column justify-content-center align-items-center sign-up-container">
       <Row>
@@ -106,7 +116,7 @@ function SignUp() {
                   type="submit"
                   className="input-styles-sign-up btn-style-sign-up"
                 >
-                  Sign Up
+                  {isLoading ? "Signing up..." : "Sign Up"}{" "}
                 </Button>
                 <Link to="/login" className="sign-up">
                   <Form.Text className="text-center">
