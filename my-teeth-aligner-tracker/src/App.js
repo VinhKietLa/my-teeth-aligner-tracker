@@ -14,7 +14,6 @@ import SignUp from "./components/sign-up/sign-up";
 import AlignersInput from "./components/aligners-input/alignersInput";
 import LoginForm from "./components/login/login";
 import Dashboard from "./components/dashboard/dashboard";
-import ConditionalNavbar from "./components/conditional-navbar/conditional-navbar";
 import Profile from "./components/profile/profile";
 import TreatmentUpdate from "./components/treatment-plan/treatment-update";
 import About from "./components/about/about";

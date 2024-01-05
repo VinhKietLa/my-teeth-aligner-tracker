@@ -23,7 +23,7 @@ Any questions or feedback, shoot me an email via kietla@live.co.uk
 
 (Optional) Add screenshots or demos.
 
-## Future updates
+## Future updates (coming real soon)
 
 - Contact form to be up and running.
 - More customisable features available in the dashboard.

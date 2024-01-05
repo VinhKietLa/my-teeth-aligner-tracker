@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import loginImg from "./log-in.png";
 
 function LoginForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -14,20 +15,27 @@ function LoginForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Call the Rails API to authenticate the user
-    const response = await fetch("https://smileminder.onrender.com/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
+    setIsLoading(true);
 
-    if (response.ok) {
-      const data = await response.json();
-      localStorage.setItem("token", data.token); // Store the token
-      navigate("/dashboard");
-    } else {
-      // Handle login failure
-      console.log("Login failed");
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("token", data.token); // Store the token
+        navigate("/dashboard");
+      } else {
+        // Handle login failure
+        console.log("Login failed");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -79,7 +87,7 @@ function LoginForm() {
                   type="submit"
                   className="input-styles btn-style"
                 >
-                  Sign in
+                  {isLoading ? "Signing in..." : "Sign in"}{" "}
                 </Button>
                 <Link to="/signup" className="sign-in">
                   <Form.Text className="text-center sign-in">

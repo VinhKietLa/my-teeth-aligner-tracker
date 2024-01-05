@@ -27,17 +27,14 @@ function Dashboard() {
         };
 
         // Fetch User Data
-        const userResponse = await fetch(
-          "https://smileminder.onrender.com/api/user",
-          {
-            headers,
-          }
-        );
+        const userResponse = await fetch("http://localhost:3000/api/user", {
+          headers,
+        });
         const userData = await userResponse.json();
         setUserData(userData);
 
         const treatmentResponse = await fetch(
-          "https://smileminder.onrender.com/api/treatment_plans",
+          "http://localhost:3000/api/treatment_plans",
           { headers }
         );
         const treatmentData = await treatmentResponse.json();
@@ -46,7 +43,7 @@ function Dashboard() {
         }
 
         const alignerResponse = await fetch(
-          "https://smileminder.onrender.com/api/aligners",
+          "http://localhost:3000/api/aligners",
           { headers }
         );
         const alignerData = await alignerResponse.json();
@@ -185,6 +182,7 @@ function Dashboard() {
               <AlignerCalendar
                 aligners={alignerInfo}
                 startDate={treatmentPlan.start_date}
+                nextSwitchDate={nextAlignerSwitchDate}
               />
               <CalendarLegend />
             </Col>
