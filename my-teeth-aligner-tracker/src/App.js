@@ -28,6 +28,21 @@ const NavbarWrapper = () => {
   return <>{showNavbar && <MyNavbar />}</>;
 };
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setIsLoading(true);
+      setTimeout(() => setIsLoading(false), 1000);
+    };
+
+    window.addEventListener("popstate", handleRouteChange);
+
+    return () => window.removeEventListener("popstate", handleRouteChange);
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <div className="page-container">
